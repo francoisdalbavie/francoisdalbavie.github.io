@@ -1,274 +1,311 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>François Dalbavie — Réalisateur</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>François Dalbavie — Réalisateur</title>
+  <meta name="description" content="Réalisateur polyvalent — Fiction, Publicité, Vidéos créatives. En résidence d'écriture long-métrage thriller néonoir." />
 
-<meta name="description" content="Réalisateur polyvalent — Fiction, publicité, vidéos créatives. Un cinéma sensible et rigoureux, entre thriller néonoir et narration visuelle.">
+  <!-- Google Fonts : Bebas Neue (titres) + Barlow (corps) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-* {margin:0; padding:0; box-sizing:border-box;}
-
-body {
-  font-family:'Inter', sans-serif;
-  background:#0a0a0f;
-  color:#f2f2f2;
-  line-height:1.6;
-  scroll-behavior:smooth;
-}
-
-section {
-  max-width:1200px;
-  margin:auto;
-  padding:5rem 2rem;
-}
-
-h1, h2 {
-  font-family:'Playfair Display', serif;
-}
-
-/* TITRES */
-h2 {
-  font-size:2.2rem;
-  margin-bottom:2rem;
-  border-bottom:1px solid #333;
-  padding-bottom:.5rem;
-  letter-spacing:.5px;
-}
-
-/* HEADER */
-header {
-  min-height:90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:2rem;
-  max-width:900px;
-  margin:auto;
-}
-
-header h1 {
-  font-size:3rem;
-  line-height:1.25;
-}
-
-header p {
-  margin-top:1rem;
-  color:#bbb;
-  max-width:700px;
-}
-
-.signature {
-  margin-top:2rem;
-  font-size:.9rem;
-  letter-spacing:2px;
-  color:#777;
-}
-
-/* NAVIGATION */
-nav {
-  position:sticky;
-  top:0;
-  background:rgba(10,10,15,.95);
-  backdrop-filter:blur(6px);
-  padding:1rem;
-  text-align:center;
-  z-index:1000;
-  border-bottom:1px solid #1a1a1d;
-}
-
-nav a {
-  margin:0 1rem;
-  font-size:.95rem;
-  color:#aaa;
-  transition:.3s;
-}
-
-nav a:hover {
-  color:#fff;
-}
-
-/* VIDEOS */
-.video-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-  gap:2rem;
-}
-
-.video-card {
-  transition:.3s;
-}
-
-.video-card:hover {
-  transform:translateY(-5px);
-}
-
-iframe {
-  width:100%;
-  aspect-ratio:16/9;
-  border:none;
-  border-radius:6px;
-  loading:lazy;
-}
-
-/* PHOTOS */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-  gap:1.5rem;
-}
-
-.photo-card img {
-  width:100%;
-  height:340px;
-  object-fit:cover;
-  border-radius:4px;
-  transition:transform .4s;
-  loading:lazy;
-}
-
-.photo-card img:hover {
-  transform:scale(1.05);
-}
-
-/* FOOTER */
-footer {
-  text-align:center;
-  padding:3rem 1rem;
-  font-size:.85rem;
-  color:#666;
-  border-top:1px solid #222;
-}
-</style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-<header>
-  <h1>Construire des histoires qui marquent et les filmer avec rigueur, sensibilité et créativité</h1>
-  <p>Réalisateur polyvalent — Fiction, Publicité, Vidéos créatives</p>
-  <p>En résidence d’écriture long-métrage thriller néonoir</p>
-  <div class="signature">FRANÇOIS DALBAVIE</div>
-</header>
+  <!-- ════════════════════════════════════
+       GRAIN OVERLAY (film texture)
+  ════════════════════════════════════ -->
+  <div class="grain" aria-hidden="true"></div>
 
-<nav>
-  <a href="#showreel">Showreel</a>
-  <a href="#fiction">Fiction</a>
-  <a href="#publicite">Publicités</a>
-  <a href="#photos">Photographie</a>
-  <a href="#documentaire">Documentaire</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<!-- SHOWREEL -->
-<section id="showreel">
-  <h2>Showreel</h2>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/aDkfbMNl4TY" loading="lazy"></iframe>
-  </div>
-</section>
-
-<!-- FICTION -->
-<section id="fiction">
-  <h2>Fiction</h2>
-  <div class="video-grid">
-
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/oXn6Yr-M1F8" loading="lazy"></iframe>
-      <p>Nikon — Court-métrage (Sélection Pop Women Festival Reims)</p>
+  <!-- ════════════════════════════════════
+       HEADER
+  ════════════════════════════════════ -->
+  <header class="hero" id="top">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Réalisateur — Paris</p>
+      <h1 class="hero__title">
+        François<br />
+        <span>Dalbavie</span>
+      </h1>
+      <p class="hero__sub">
+        Fiction · Publicité · Vidéo créative<br />
+        En résidence d'écriture — long-métrage thriller néonoir
+      </p>
     </div>
+    <a href="#publicite" class="hero__scroll" aria-label="Défiler">
+      <span></span>
+    </a>
+  </header>
 
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/rHgSfpGevFM" loading="lazy"></iframe>
-      <p>CAPTIF</p>
-    </div>
+  <!-- ════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Menu principal">
+    <ul class="nav__list">
+      <li><a href="#publicite" class="nav__link">Publicités</a></li>
+      <li><a href="#fiction"   class="nav__link">Fiction</a></li>
+      <li><a href="#photos"    class="nav__link">Photos</a></li>
+      <li><a href="#documentaire" class="nav__link">Documentaire</a></li>
+      <li><a href="#contact"   class="nav__link nav__link--cta">Contact</a></li>
+    </ul>
+  </nav>
 
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/Z4ewSiJUP0E" loading="lazy"></iframe>
-      <p>Perturbation — La Fémis</p>
-    </div>
+  <main>
 
-  </div>
-</section>
+    <!-- ════════════════════════════════════
+         01 — PUBLICITÉS & VIDÉOS CRÉATIVES
+    ════════════════════════════════════ -->
+    <section class="section" id="publicite">
+      <div class="section__header">
+        <span class="section__num">01</span>
+        <h2 class="section__title">Publicités &amp;<br />Vidéos créatives</h2>
+      </div>
 
-<!-- PUBLICITÉS -->
-<section id="publicite">
-  <h2>Publicités & Vidéos créatives</h2>
-  <div class="video-grid">
+      <div class="video-grid">
 
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/Jskn9vrIHRI" loading="lazy"></iframe>
-      <p>Domaine de la Voie Blanche</p>
-    </div>
+        <!-- Showreel général -->
+        <article class="video-card video-card--featured">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/aDkfbMNl4TY"
+                    loading="lazy" allowfullscreen
+                    title="Showreel général"></iframe>
+          </div>
+          <p class="video-card__label">Showreel général</p>
+        </article>
 
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/CG2bSnPaMVU" loading="lazy"></iframe>
-      <p>Marly Poésie — 600k vues</p>
-    </div>
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/Jskn9vrIHRI"
+                    loading="lazy" allowfullscreen
+                    title="Domaine de la Voie Blanche"></iframe>
+          </div>
+          <p class="video-card__label">Domaine de la Voie Blanche</p>
+        </article>
 
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/vZdGn1X1sfI" loading="lazy"></iframe>
-      <p>Marly Poésie — 180k vues</p>
-    </div>
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/CG2bSnPaMVU"
+                    loading="lazy" allowfullscreen
+                    title="Marly Poésie"></iframe>
+          </div>
+          <p class="video-card__label">Marly Poésie — 600k vues</p>
+        </article>
 
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/Xp35-Y2zXRw" loading="lazy"></iframe>
-      <p>Short Instagram</p>
-    </div>
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/vZdGn1X1sfI"
+                    loading="lazy" allowfullscreen
+                    title="Marly Poésie"></iframe>
+          </div>
+          <p class="video-card__label">Marly Poésie — 180k vues</p>
+        </article>
 
-  </div>
-</section>
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/Xp35-Y2zXRw"
+                    loading="lazy" allowfullscreen
+                    title="Short Instagram"></iframe>
+          </div>
+          <p class="video-card__label">Short Instagram</p>
+        </article>
 
-<!-- PHOTOS -->
-<section id="photos">
-  <h2>Portrait de Denis</h2>
-  <div class="grid">
-    <!-- Chaque image a un alt -->
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M" alt="Portrait Denis 1"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1JDWxV9p4mhMXpzW13XATJznB88VrMsa7" alt="Portrait Denis 2"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm" alt="Portrait Denis 3"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe" alt="Portrait Denis 4"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1ODajiSv8YPJBsDBckNXb_ZQVK65MVg2v" alt="Portrait Denis 5"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1lt0LMnwB4hq5-6vL9NpeessLfoVARTId" alt="Portrait Denis 6"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1LTOm89NRPEWG455kqfweAaQ17Dt88LIM" alt="Portrait Denis 7"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1ZqkcamlapLxYEF9MdX_SOIM0gLv79TJ4" alt="Portrait Denis 8"></div>
-  </div>
+      </div>
+    </section>
 
-  <h2 style="margin-top:4rem;">Spéléologie — Périgord Noir</h2>
-  <div class="grid">
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1JngzplHxGt9wFLGXBcQZaAHKy7w0jDSl" alt="Spéléologie 1"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1-dD3z4fqWYxtHEOlaF22jGHDNDeSSkAu" alt="Spéléologie 2"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1HC3DOG1Ei0ZO_tNB1vR4-OroBYW7HQcy" alt="Spéléologie 3"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=13nwAkSs4ijMu1MGNHETJwmAXnEgkBwdJ" alt="Spéléologie 4"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1YsWC_jhYNCUGPN_uc6Mp5fBNGhdjS9mU" alt="Spéléologie 5"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1H4Ij8TC41-zluhJ0tn_fCroonA9EM9MN" alt="Spéléologie 6"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1rQF82guYOgCmnT1cv5j-fzearn1FYLEU" alt="Spéléologie 7"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1fwLEW5FSYlxxJXeZzxLRl7AGKb5xyxtN" alt="Spéléologie 8"></div>
-  </div>
-</section>
+    <!-- ════════════════════════════════════
+         02 — FICTION
+    ════════════════════════════════════ -->
+    <section class="section" id="fiction">
+      <div class="section__header">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Fiction</h2>
+      </div>
 
-<!-- DOCUMENTAIRE -->
-<section id="documentaire">
-  <h2>Documentaire</h2>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/Zn5gNZbU3kk" loading="lazy"></iframe>
-  </div>
-</section>
+      <!-- Showreel fiction : mis en avant -->
+      <div class="fiction-hero">
+        <div class="fiction-hero__embed">
+          <iframe src="https://www.youtube.com/embed/rwhJnacFMfU"
+                  loading="lazy" allowfullscreen
+                  title="Showreel Fiction"></iframe>
+        </div>
+        <div class="fiction-hero__text">
+          <p class="fiction-hero__eyebrow">Showreel Fiction</p>
+          <h3 class="fiction-hero__heading">
+            Un regard<br />qui construit<br />chaque plan.
+          </h3>
+          <p class="fiction-hero__body">
+            Courts-métrages et fictions — de l'écriture au montage,
+            une narration visuelle au service du récit.
+          </p>
+        </div>
+      </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email : <a href="mailto:dalbaviefrancois@gmail.com"><b>dalbaviefrancois@gmail.com</b></a></p>
-</section>
+      <!-- Séparateur -->
+      <div class="divider">
+        <span>Œuvres</span>
+      </div>
 
-<footer>
-© 2026 François Dalbavie — Tous droits réservés
-</footer>
+      <!-- Films -->
+      <div class="video-grid">
 
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/oXn6Yr-M1F8"
+                    loading="lazy" allowfullscreen
+                    title="Nikon — Court-métrage"></iframe>
+          </div>
+          <p class="video-card__label">Nikon — Court-métrage</p>
+          <p class="video-card__sublabel">Sélection Pop Women Festival Reims</p>
+        </article>
+
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/rHgSfpGevFM"
+                    loading="lazy" allowfullscreen
+                    title="Captif"></iframe>
+          </div>
+          <p class="video-card__label">Captif</p>
+        </article>
+
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/Z4ewSiJUP0E"
+                    loading="lazy" allowfullscreen
+                    title="Perturbation — La Fémis"></iframe>
+          </div>
+          <p class="video-card__label">Perturbation</p>
+          <p class="video-card__sublabel">La Fémis</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         03 — PHOTOGRAPHIE
+    ════════════════════════════════════ -->
+    <section class="section" id="photos">
+      <div class="section__header">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Photographie</h2>
+      </div>
+
+      <h3 class="photo-series-title">Portrait de Denis</h3>
+      <div class="photo-grid" id="grid-denis">
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M&sz=w800"
+               alt="Portrait Denis 1" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1JDWxV9p4mhMXpzW13XATJznB88VrMsa7&sz=w800"
+               alt="Portrait Denis 2" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm&sz=w800"
+               alt="Portrait Denis 3" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe&sz=w800"
+               alt="Portrait Denis 4" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1ODajiSv8YPJBsDBckNXb_ZQVK65MVg2v&sz=w800"
+               alt="Portrait Denis 5" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1lt0LMnwB4hq5-6vL9NpeessLfoVARTId&sz=w800"
+               alt="Portrait Denis 6" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1LTOm89NRPEWG455kqfweAaQ17Dt88LIM&sz=w800"
+               alt="Portrait Denis 7" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1ZqkcamlapLxYEF9MdX_SOIM0gLv79TJ4&sz=w800"
+               alt="Portrait Denis 8" loading="lazy" />
+        </figure>
+      </div>
+
+      <h3 class="photo-series-title">Spéléologie — Périgord Noir</h3>
+      <div class="photo-grid" id="grid-speleo">
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1JngzplHxGt9wFLGXBcQZaAHKy7w0jDSl&sz=w800"
+               alt="Spéléologie 1" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1-dD3z4fqWYxtHEOlaF22jGHDNDeSSkAu&sz=w800"
+               alt="Spéléologie 2" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1HC3DOG1Ei0ZO_tNB1vR4-OroBYW7HQcy&sz=w800"
+               alt="Spéléologie 3" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=13nwAkSs4ijMu1MGNHETJwmAXnEgkBwdJ&sz=w800"
+               alt="Spéléologie 4" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1YsWC_jhYNCUGPN_uc6Mp5fBNGhdjS9mU&sz=w800"
+               alt="Spéléologie 5" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1H4Ij8TC41-zluhJ0tn_fCroonA9EM9MN&sz=w800"
+               alt="Spéléologie 6" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1rQF82guYOgCmnT1cv5j-fzearn1FYLEU&sz=w800"
+               alt="Spéléologie 7" loading="lazy" />
+        </figure>
+        <figure class="photo-card">
+          <img src="https://drive.google.com/thumbnail?id=1fwLEW5FSYlxxJXeZzxLRl7AGKb5xyxtN&sz=w800"
+               alt="Spéléologie 8" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         04 — DOCUMENTAIRE
+    ════════════════════════════════════ -->
+    <section class="section" id="documentaire">
+      <div class="section__header">
+        <span class="section__num">04</span>
+        <h2 class="section__title">Documentaire</h2>
+      </div>
+
+      <div class="doc-single">
+        <article class="video-card">
+          <div class="video-card__embed">
+            <iframe src="https://www.youtube.com/embed/Zn5gNZbU3kk"
+                    loading="lazy" allowfullscreen
+                    title="Documentaire"></iframe>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         CONTACT
+    ════════════════════════════════════ -->
+    <section class="section section--contact" id="contact">
+      <h2 class="contact__title">Travaillons<br /><span>ensemble.</span></h2>
+      <a class="contact__link" href="mailto:dalbaviefrancois@gmail.com">
+        dalbaviefrancois@gmail.com
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════ -->
+  <footer class="footer">
+    <p>© 2026 François Dalbavie</p>
+    <a href="#top" class="footer__back">↑ Haut de page</a>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
