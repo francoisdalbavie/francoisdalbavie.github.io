@@ -1,11 +1,11 @@
 /* ============================================================
-   DALBAVIE â€” style.css
-   EsthÃ©tique : minimaliste cinÃ©matographique, thriller Ã  la Nolan
-   Palette : noir profond Â· blanc froid Â· gris intermÃ©diaire
+   DALBAVIE — style.css
+   Esthétique : minimaliste cinématographique, thriller à la Nolan
+   Palette : noir profond · blanc froid · gris intermédiaire
    Police : Bebas Neue (titres) + Barlow (corps)
    ============================================================ */
 
-/* â”€â”€ RESET & BASE â”€â”€ */
+/* ── RESET & BASE ── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -18,10 +18,10 @@
   --grey-d:  #1c1c1c;
   --grey-m:  #3a3a3a;
   --grey-l:  #6a6a6a;
-  --white:   #f0ece8;       /* blanc chaud â€” pellicule */
-  --accent:  #c8c0b0;       /* beige cendrÃ©, pas de couleur franche */
+  --white:   #f0ece8;       /* blanc chaud — pellicule */
+  --accent:  #c8c0b0;       /* beige cendré, pas de couleur franche */
 
-  --font-title: 'Bebas Neue', sans-serif;
+  --font-title: 'Cinzel', serif;
   --font-body:  'Barlow', sans-serif;
 
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -52,7 +52,7 @@ img {
   max-width: 100%;
 }
 
-/* â”€â”€ CUSTOM CURSOR â”€â”€ */
+/* ── CUSTOM CURSOR ── */
 .cursor {
   position: fixed;
   top: 0; left: 0;
@@ -74,7 +74,7 @@ img {
   height: 32px;
 }
 
-/* â”€â”€ GRAIN OVERLAY â”€â”€ */
+/* ── GRAIN OVERLAY ── */
 .grain {
   position: fixed;
   inset: -50%;
@@ -94,68 +94,65 @@ img {
   75%       { transform: translate(-1%, 1%); }
 }
 
-/* â”€â”€ HERO â”€â”€ */
+/* ── HERO ── */
 .hero {
   position: relative;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 0 5vw 5rem;
   border-bottom: 1px solid var(--grey-d);
   overflow: hidden;
 }
 
-/* ligne verticale dÃ©corative */
+/* ligne verticale décorative */
 .hero::before {
   content: '';
   position: absolute;
-  top: 0; left: 5vw;
+  top: 0; left: 50%;
   width: 1px;
-  height: 40%;
+  height: 15%;
   background: linear-gradient(to bottom, transparent, var(--grey-m));
 }
 
 .hero__inner {
-  max-width: 900px;
+  max-width: 700px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 1s var(--ease) 0.3s forwards;
 }
 
 .hero__eyebrow {
-  font-size: 0.7rem;
-  letter-spacing: 5px;
+  font-size: 0.65rem;
+  letter-spacing: 6px;
   text-transform: uppercase;
   color: var(--grey-l);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero__title {
   font-family: var(--font-title);
-  font-size: clamp(5rem, 16vw, 14rem);
-  line-height: 0.9;
-  letter-spacing: -1px;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 8px;
+  text-transform: uppercase;
   color: var(--white);
-}
-
-.hero__title span {
-  /* Second line slightly indented */
-  display: block;
-  margin-left: 4vw;
-  color: var(--accent);
 }
 
 .hero__sub {
   margin-top: 2.5rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--grey-l);
-  line-height: 2;
+  line-height: 2.2;
 }
 
-/* flÃ¨che scroll */
+/* flèche scroll */
 .hero__scroll {
   position: absolute;
   bottom: 2.5rem;
@@ -192,7 +189,7 @@ img {
   100% { height: 0; top: 100%; }
 }
 
-/* â”€â”€ NAV â”€â”€ */
+/* ── NAV ── */
 .nav {
   position: sticky;
   top: 0;
@@ -247,7 +244,7 @@ img {
   color: var(--white);
 }
 
-/* â”€â”€ SECTIONS â”€â”€ */
+/* ── SECTIONS ── */
 .section {
   max-width: 1280px;
   margin: 0 auto;
@@ -276,7 +273,7 @@ img {
   letter-spacing: 1px;
 }
 
-/* â”€â”€ VIDEO GRID â”€â”€ */
+/* ── VIDEO GRID ── */
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -326,7 +323,7 @@ img {
   text-transform: uppercase;
 }
 
-/* â”€â”€ FICTION HERO â”€â”€ */
+/* ── FICTION HERO ── */
 .fiction-hero {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -374,7 +371,7 @@ img {
   max-width: 320px;
 }
 
-/* â”€â”€ DIVIDER â”€â”€ */
+/* ── DIVIDER ── */
 .divider {
   display: flex;
   align-items: center;
@@ -394,7 +391,7 @@ img {
   background: var(--grey-d);
 }
 
-/* â”€â”€ PHOTO GRID â”€â”€ */
+/* ── PHOTO GRID ── */
 .photo-series-title {
   font-family: var(--font-title);
   font-size: 1.4rem;
@@ -435,31 +432,38 @@ img {
   filter: grayscale(0%) contrast(1);
 }
 
-/* â”€â”€ DOCUMENTAIRE â”€â”€ */
+/* ── DOCUMENTAIRE ── */
 .doc-single {
   max-width: 700px;
 }
 
-/* â”€â”€ CONTACT â”€â”€ */
+/* ── CONTACT ── */
 .section--contact {
   border-bottom: none;
-  padding: 10rem 5vw;
+  padding: 8rem 5vw;
+  text-align: center;
+}
+
+.contact__eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--grey-l);
+  margin-bottom: 1.5rem;
 }
 
 .contact__title {
   font-family: var(--font-title);
-  font-size: clamp(4rem, 10vw, 9rem);
-  line-height: 0.95;
-  margin-bottom: 3rem;
-}
-
-.contact__title span {
-  color: var(--accent);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
 }
 
 .contact__link {
   display: inline-block;
-  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  font-size: 0.8rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--grey-l);
@@ -473,7 +477,7 @@ img {
   border-color: var(--white);
 }
 
-/* â”€â”€ FOOTER â”€â”€ */
+/* ── FOOTER ── */
 .footer {
   display: flex;
   justify-content: space-between;
@@ -494,12 +498,12 @@ img {
   color: var(--white);
 }
 
-/* â”€â”€ ANIMATIONS â”€â”€ */
+/* ── ANIMATIONS ── */
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Ã‰lÃ©ments Ã  rÃ©vÃ©ler au scroll (classe ajoutÃ©e par JS) */
+/* Éléments à révéler au scroll (classe ajoutée par JS) */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -517,7 +521,7 @@ img {
 .reveal:nth-child(4) { transition-delay: 0.3s; }
 .reveal:nth-child(5) { transition-delay: 0.4s; }
 
-/* â”€â”€ RESPONSIVE â”€â”€ */
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .fiction-hero {
     grid-template-columns: 1fr;
