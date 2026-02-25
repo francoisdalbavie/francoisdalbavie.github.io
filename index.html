@@ -9,167 +9,133 @@
 
 <style>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#0a0a0f;
+  color:#f2f2f2;
+  line-height:1.6;
+  scroll-behavior:smooth;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #0a0a0f;
-  color: #f2f2f2;
-  line-height: 1.6;
-  scroll-behavior: smooth;
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:5rem 2rem;
 }
 
-a {
-  color: #f2f2f2;
-  text-decoration: none;
+h1,h2{
+  font-family:'Playfair Display',serif;
 }
 
-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 5rem 2rem;
+h2{
+  font-size:2rem;
+  margin-bottom:2rem;
+  border-bottom:1px solid #333;
+  padding-bottom:.5rem;
 }
 
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
+a{color:#ccc;text-decoration:none;}
+a:hover{color:#fff;}
+
+header{
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:2rem;
 }
 
-h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #333;
-  padding-bottom: 0.5rem;
+header h1{
+  font-size:2.8rem;
+  max-width:900px;
 }
 
-/* HERO */
-
-header {
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
+header p{
+  margin-top:1rem;
+  color:#888;
+  max-width:700px;
 }
 
-header h1 {
-  font-size: 2.8rem;
-  max-width: 900px;
+.signature{
+  margin-top:2rem;
+  font-size:.85rem;
+  letter-spacing:2px;
+  color:#666;
 }
 
-header p {
-  margin-top: 1rem;
-  color: #888;
-  font-size: 1rem;
-  max-width: 700px;
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(10,10,15,.95);
+  backdrop-filter:blur(6px);
+  padding:1rem;
+  text-align:center;
+  z-index:1000;
 }
 
-.signature {
-  margin-top: 2rem;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  color: #666;
+nav a{
+  margin:0 1.2rem;
+  font-size:.9rem;
+  color:#aaa;
+  transition:.3s;
 }
 
-/* NAV */
+nav a:hover{color:#fff;}
 
-nav {
-  position: sticky;
-  top: 0;
-  background: rgba(10,10,15,0.95);
-  backdrop-filter: blur(6px);
-  padding: 1rem;
-  text-align: center;
-  z-index: 1000;
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+  gap:2rem;
 }
 
-nav a {
-  margin: 0 1.2rem;
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: #aaa;
-  transition: color 0.3s ease;
+.video-card{
+  transition:.4s;
 }
 
-nav a:hover {
-  color: #fff;
+.video-card:hover{
+  transform:translateY(-5px);
+  opacity:.9;
 }
 
-/* VIDEO GRID */
-
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
+iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+  border-radius:6px;
 }
 
-.video-card {
-  transition: transform 0.4s ease, opacity 0.4s ease;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
 }
 
-.video-card:hover {
-  transform: translateY(-5px);
-  opacity: 0.9;
+.photo-card{
+  overflow:hidden;
 }
 
-iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 6px;
-  border: none;
+.photo-card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:4px;
+  transition:.4s;
 }
 
-/* PHOTO GRID */
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+.photo-card img:hover{
+  transform:scale(1.05);
 }
 
-.photo-card {
-  overflow: hidden;
-}
-
-.photo-card img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 4px;
-  transition: transform 0.4s ease;
-}
-
-.photo-card img:hover {
-  transform: scale(1.05);
-}
-
-/* INTENTIONS */
-
-.intentions p {
-  max-width: 750px;
-  color: #aaa;
-}
-
-/* CONTACT */
-
-#contact p {
-  font-size: 1rem;
-}
-
-/* FOOTER */
-
-footer {
-  text-align: center;
-  padding: 3rem 1rem;
-  font-size: 0.85rem;
-  color: #555;
-  border-top: 1px solid #222;
+footer{
+  text-align:center;
+  padding:3rem 1rem;
+  font-size:.85rem;
+  color:#555;
+  border-top:1px solid #222;
 }
 
 </style>
@@ -178,16 +144,17 @@ footer {
 
 <header>
   <h1>Construire des histoires qui marquent et les filmer avec rigueur, sensibilité et créativité</h1>
-  <p>Building stories that leave a mark, filmed with rigor, sensitivity and creativity</p>
-  <p>En résidence d’écriture long-métrage thriller néonoir — Rotonde Stalingrad</p>
-  <div class="signature">FRANÇOIS DALBAVIE — RÉALISATEUR</div>
+  <p>Réalisateur polyvalent — Fiction, Publicité, Vidéos créatives</p>
+  <p>En résidence d’écriture long-métrage thriller néonoir</p>
+  <div class="signature">FRANÇOIS DALBAVIE</div>
 </header>
 
 <nav>
   <a href="#showreel">Showreel</a>
   <a href="#fiction">Fiction</a>
+  <a href="#publicite">Publicités & Créations</a>
+  <a href="#photos">Photographie</a>
   <a href="#documentaire">Documentaire</a>
-  <a href="#regard">Regard visuel</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -196,19 +163,8 @@ footer {
 <section id="showreel">
   <h2>Showreel</h2>
   <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/aDkfbMNl4TY" title="Showreel"></iframe>
+    <iframe src="https://www.youtube.com/embed/aDkfbMNl4TY"></iframe>
   </div>
-</section>
-
-<!-- INTENTIONS -->
-
-<section class="intentions">
-  <h2>Intentions</h2>
-  <p>
-  Je développe un cinéma narratif structuré et tendu, où la mise en scène et la direction d’acteur
-  construisent une tension intérieure plus que spectaculaire.
-  Mon travail explore les zones grises, les fractures humaines et les univers à la frontière du réel.
-  </p>
 </section>
 
 <!-- FICTION -->
@@ -216,58 +172,91 @@ footer {
 <section id="fiction">
   <h2>Fiction</h2>
   <div class="video-grid">
+
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/rwhJnacFMfU" title="Showreel Fiction"></iframe>
+      <iframe src="https://www.youtube.com/embed/oXn6Yr-M1F8"></iframe>
+      <p>Nikon — Court-métrage (Sélection Pop Women Festival Reims)</p>
     </div>
+
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/rHgSfpGevFM" title="CAPTIF"></iframe>
+      <iframe src="https://www.youtube.com/embed/rHgSfpGevFM"></iframe>
+      <p>CAPTIF</p>
     </div>
+
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/Z4ewSiJUP0E" title="Perturbation FEMIS"></iframe>
+      <iframe src="https://www.youtube.com/embed/Z4ewSiJUP0E"></iframe>
+      <p>Perturbation — La Fémis</p>
     </div>
+
   </div>
 </section>
 
-<!-- DOCUMENTAIRE -->
+<!-- PUBLICITÉS & VIDÉOS CRÉATIVES -->
+
+<section id="publicite">
+  <h2>Publicités & Vidéos créatives</h2>
+  <div class="video-grid">
+
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/Jskn9vrIHRI"></iframe>
+      <p>Pub Web — Domaine de la Voie Blanche</p>
+    </div>
+
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/CG2bSnPaMVU"></iframe>
+      <p>Marly Poésie — 600k vues</p>
+    </div>
+
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/vZdGn1X1sfI"></iframe>
+      <p>Marly Poésie — 180k vues</p>
+    </div>
+
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/Xp35-Y2zXRw"></iframe>
+      <p>Short Instagram</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHOTOS -->
+
+<section id="photos">
+  <h2>Portrait de Denis</h2>
+  <div class="grid">
+    <!-- Portraits Denis -->
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1JDWxV9p4mhMXpzW13XATJznB88VrMsa7"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1ODajiSv8YPJBsDBckNXb_ZQVK65MVg2v"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1lt0LMnwB4hq5-6vL9NpeessLfoVARTId"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1LTOm89NRPEWG455kqfweAaQ17Dt88LIM"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1ZqkcamlapLxYEF9MdX_SOIM0gLv79TJ4"></div>
+  </div>
+
+  <h2 style="margin-top:4rem;">Spéléologie — Périgord Noir</h2>
+  <div class="grid">
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1JngzplHxGt9wFLGXBcQZaAHKy7w0jDSl"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1-dD3z4fqWYxtHEOlaF22jGHDNDeSSkAu"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1HC3DOG1Ei0ZO_tNB1vR4-OroBYW7HQcy"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=13nwAkSs4ijMu1MGNHETJwmAXnEgkBwdJ"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1YsWC_jhYNCUGPN_uc6Mp5fBNGhdjS9mU"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1H4Ij8TC41-zluhJ0tn_fCroonA9EM9MN"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1rQF82guYOgCmnT1cv5j-fzearn1FYLEU"></div>
+    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1fwLEW5FSYlxxJXeZzxLRl7AGKb5xyxtN"></div>
+  </div>
+</section>
+
+<!-- DOCUMENTAIRE (EN DERNIER) -->
 
 <section id="documentaire">
   <h2>Documentaire</h2>
   <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/Zn5gNZbU3kk" title="Documentaire Social"></iframe>
+    <iframe src="https://www.youtube.com/embed/Zn5gNZbU3kk"></iframe>
   </div>
 </section>
-
-<!-- REGARD VISUEL -->
-
-<section id="regard">
-  <h2>Regard visuel</h2>
-  <div class="video-grid">
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/CG2bSnPaMVU" title="Marly Poésie 600k vues"></iframe>
-    </div>
-    <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/vZdGn1X1sfI" title="Marly Poésie 180k vues"></iframe>
-    </div>
-  </div>
-
-  <h2 style="margin-top:4rem;">Photographie</h2>
-  <div class="photo-grid">
-    <div class="photo-card">
-      <img src="https://drive.google.com/uc?export=view&id=1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M">
-    </div>
-    <div class="photo-card">
-      <img src="https://drive.google.com/uc?export=view&id=1JDWxV9p4mhMXpzW13XATJznB88VrMsa7">
-    </div>
-    <div class="photo-card">
-      <img src="https://drive.google.com/uc?export=view&id=1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm">
-    </div>
-    <div class="photo-card">
-      <img src="https://drive.google.com/uc?export=view&id=1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe">
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
 
 <section id="contact">
   <h2>Contact</h2>
@@ -275,7 +264,7 @@ footer {
 </section>
 
 <footer>
-  © 2026 François Dalbavie — Tous droits réservés
+© 2026 François Dalbavie — Tous droits réservés
 </footer>
 
 </body>
