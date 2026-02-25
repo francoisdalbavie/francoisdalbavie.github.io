@@ -1,193 +1,281 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>François Dalbavie - Réalisateur</title>
-  <style>
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #0d0d0d;
-      color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
-    a { color: #f5f5f5; text-decoration: none; }
-    header {
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-      background: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #aaa;
-      margin-top: 0.5rem;
-    }
-    nav {
-      text-align: center;
-      margin: 1rem 0;
-    }
-    nav a {
-      margin: 0 1rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #555;
-      padding-bottom: 0.5rem;
-    }
-    .video-card, .photo-card {
-      margin-bottom: 2rem;
-    }
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .photo-card img {
-      width: 100%;
-      display: block;
-      border-radius: 4px;
-      transition: transform 0.3s;
-    }
-    .photo-card img:hover {
-      transform: scale(1.05);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #111;
-      color: #888;
-      font-size: 0.9rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>François Dalbavie — Réalisateur</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0f;
+  color: #f2f2f2;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 5rem 2rem;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+/* HERO */
+
+header {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  max-width: 900px;
+}
+
+header p {
+  margin-top: 1rem;
+  color: #888;
+  font-size: 1rem;
+  max-width: 700px;
+}
+
+.signature {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #666;
+}
+
+/* NAV */
+
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,15,0.95);
+  backdrop-filter: blur(6px);
+  padding: 1rem;
+  text-align: center;
+  z-index: 1000;
+}
+
+nav a {
+  margin: 0 1.2rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* VIDEO GRID */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.video-card {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  opacity: 0.9;
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  border: none;
+}
+
+/* PHOTO GRID */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.photo-card {
+  overflow: hidden;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 0.4s ease;
+}
+
+.photo-card img:hover {
+  transform: scale(1.05);
+}
+
+/* INTENTIONS */
+
+.intentions p {
+  max-width: 750px;
+  color: #aaa;
+}
+
+/* CONTACT */
+
+#contact p {
+  font-size: 1rem;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 0.85rem;
+  color: #555;
+  border-top: 1px solid #222;
+}
+
+</style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <h1>Construire des histoires qui marquent et les filmer avec rigueur, sensibilité et créativité 🎥</h1>
-  <p>Building stories that leave a mark, filmed with rigor, sensitivity, and creativity</p>
-  <p>En résidence d'écriture long-métrage thriller néonoir à la Rotonde Stalingrad</p>
+  <h1>Construire des histoires qui marquent et les filmer avec rigueur, sensibilité et créativité</h1>
+  <p>Building stories that leave a mark, filmed with rigor, sensitivity and creativity</p>
+  <p>En résidence d’écriture long-métrage thriller néonoir — Rotonde Stalingrad</p>
+  <div class="signature">FRANÇOIS DALBAVIE — RÉALISATEUR</div>
 </header>
 
-<!-- NAVIGATION -->
 <nav>
-  <a href="#films">Films</a>
+  <a href="#showreel">Showreel</a>
   <a href="#fiction">Fiction</a>
-  <a href="#reportage">Reportage</a>
-  <a href="#photos">Photographies</a>
+  <a href="#documentaire">Documentaire</a>
+  <a href="#regard">Regard visuel</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- FILMS PRINCIPAUX -->
-<section id="films">
+<!-- SHOWREEL -->
+
+<section id="showreel">
   <h2>Showreel</h2>
   <div class="video-card">
     <iframe src="https://www.youtube.com/embed/aDkfbMNl4TY" title="Showreel"></iframe>
-    <p>Showreel principal – Mes meilleurs travaux en cinéma et vidéo</p>
   </div>
+</section>
 
-  <h2>Vidéos</h2>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/Jskn9vrIHRI" title="Pubweb Domaine de la Voie Blanche"></iframe>
-    <p>Pubweb Domaine de la Voie Blanche</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/oXn6Yr-M1F8" title="Nikon Court-métrage Pop Women Festival"></iframe>
-    <p>Nikon Court-métrage – sélectionné Pop Women Festival Reims</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/Xp35-Y2zXRw" title="Short Insta"></iframe>
-    <p>Short Instagram</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/Z4ewSiJUP0E" title="Court-métrage concours FEMIS"></iframe>
-    <p>Perturbation – Court-métrage concours FEMIS</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/CG2bSnPaMVU" title="Vidéo chorégraphique Marly Poésie 600k vues"></iframe>
-    <p>Vidéo chorégraphique – Marly Poésie (600k vues)</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/vZdGn1X1sfI" title="Vidéo chorégraphique Marly Poésie 180k vues"></iframe>
-    <p>Vidéo chorégraphique – Marly Poésie (180k vues)</p>
-  </div>
+<!-- INTENTIONS -->
+
+<section class="intentions">
+  <h2>Intentions</h2>
+  <p>
+  Je développe un cinéma narratif structuré et tendu, où la mise en scène et la direction d’acteur
+  construisent une tension intérieure plus que spectaculaire.
+  Mon travail explore les zones grises, les fractures humaines et les univers à la frontière du réel.
+  </p>
 </section>
 
 <!-- FICTION -->
+
 <section id="fiction">
   <h2>Fiction</h2>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/rwhJnacFMfU" title="Showreel Fiction"></iframe>
-    <p>Showreel Fiction</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/rHgSfpGevFM" title="CAPTIF"></iframe>
-    <p>CAPTIF – Premier court-métrage</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/oXn6Yr-M1F8" title="Nikon Court-métrage"></iframe>
-    <p>Nikon Court-métrage – Pop Women Festival Reims</p>
-  </div>
-  <div class="video-card">
-    <iframe src="https://www.youtube.com/embed/Z4ewSiJUP0E" title="Perturbation FEMIS"></iframe>
-    <p>Perturbation – Court-métrage concours FEMIS</p>
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/rwhJnacFMfU" title="Showreel Fiction"></iframe>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/rHgSfpGevFM" title="CAPTIF"></iframe>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/Z4ewSiJUP0E" title="Perturbation FEMIS"></iframe>
+    </div>
   </div>
 </section>
 
-<!-- REPORTAGE SOCIAL -->
-<section id="reportage">
-  <h2>Reportage Social</h2>
+<!-- DOCUMENTAIRE -->
+
+<section id="documentaire">
+  <h2>Documentaire</h2>
   <div class="video-card">
     <iframe src="https://www.youtube.com/embed/Zn5gNZbU3kk" title="Documentaire Social"></iframe>
-    <p>Documentaire social – première œuvre</p>
   </div>
 </section>
 
-<!-- PHOTOS -->
-<section id="photos">
-  <h2>Portrait de Denis</h2>
-  <div class="grid">
-    <!-- Portraits de Denis -->
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M" alt="Portrait Denis 1"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1JDWxV9p4mhMXpzW13XATJznB88VrMsa7" alt="Portrait Denis 2"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm" alt="Portrait Denis 3"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe" alt="Portrait Denis 4"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1ODajiSv8YPJBsDBckNXb_ZQVK65MVg2v" alt="Portrait Denis 5"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1lt0LMnwB4hq5-6vL9NpeessLfoVARTId" alt="Portrait Denis 6"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1LTOm89NRPEWG455kqfweAaQ17Dt88LIM" alt="Portrait Denis 7"></div>
-    <div class="photo-card"><img src="https://drive.google.com/uc?export=view&id=1ZqkcamlapLxYEF9MdX_SOIM0gLv79TJ4" alt="Portrait Denis 8"></div>
-    <!-- ajouter toutes les autres si tu veux -->
+<!-- REGARD VISUEL -->
+
+<section id="regard">
+  <h2>Regard visuel</h2>
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/CG2bSnPaMVU" title="Marly Poésie 600k vues"></iframe>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/vZdGn1X1sfI" title="Marly Poésie 180k vues"></iframe>
+    </div>
+  </div>
+
+  <h2 style="margin-top:4rem;">Photographie</h2>
+  <div class="photo-grid">
+    <div class="photo-card">
+      <img src="https://drive.google.com/uc?export=view&id=1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M">
+    </div>
+    <div class="photo-card">
+      <img src="https://drive.google.com/uc?export=view&id=1JDWxV9p4mhMXpzW13XATJznB88VrMsa7">
+    </div>
+    <div class="photo-card">
+      <img src="https://drive.google.com/uc?export=view&id=1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm">
+    </div>
+    <div class="photo-card">
+      <img src="https://drive.google.com/uc?export=view&id=1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe">
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact">
   <h2>Contact</h2>
   <p>Email : <a href="mailto:dalbaviefrancois@gmail.com">dalbaviefrancois@gmail.com</a></p>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  &copy; 2026 François Dalbavie – Tous droits réservés
+  © 2026 François Dalbavie — Tous droits réservés
 </footer>
 
 </body>
