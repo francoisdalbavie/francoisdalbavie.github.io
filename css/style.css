@@ -585,6 +585,103 @@ img {
 .reveal:nth-child(4) { transition-delay: 0.3s; }
 .reveal:nth-child(5) { transition-delay: 0.4s; }
 
+/* ── LIGHTBOX ── */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0,0,0,0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lbFadeIn 0.25s var(--ease);
+}
+
+.lb[hidden] { display: none; }
+
+@keyframes lbFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lb__img-wrap {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lb__img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  animation: lbImgIn 0.2s var(--ease);
+}
+
+@keyframes lbImgIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.lb__close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  background: transparent;
+  border: 1px solid var(--grey-m);
+  color: var(--white);
+  width: 40px; height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.lb__close:hover {
+  background: var(--grey-d);
+  border-color: var(--white);
+}
+
+.lb__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid var(--grey-m);
+  color: var(--white);
+  width: 48px; height: 48px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.lb__nav:hover {
+  background: var(--grey-d);
+  border-color: var(--white);
+}
+
+.lb__nav--prev { left: 1.5rem; }
+.lb__nav--next { right: 1.5rem; }
+
+.lb__counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--grey-l);
+  text-transform: uppercase;
+}
+
+/* curseur pointer sur les photos */
+.photo-card {
+  cursor: pointer;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .fiction-hero {
