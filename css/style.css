@@ -156,6 +156,15 @@ img {
   line-height: 2.2;
 }
 
+.hero__residence {
+  margin-top: 3.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: var(--grey-m);
+  line-height: 2;
+  font-style: italic;
+}
+
 /* flèche scroll */
 .hero__scroll {
   position: absolute;
