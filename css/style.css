@@ -468,8 +468,13 @@ img {
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  gap: 3px;
   margin-bottom: 0;
+  /* Débordement pleine largeur hors du max-width de la section */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .photo-card {
