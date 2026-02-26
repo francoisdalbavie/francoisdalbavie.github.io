@@ -107,4 +107,71 @@
       : 'var(--grey-d)';
   }, { passive: true });
 
+  /* ── 5. LIGHTBOX ─────────────────────────────────────────── */
+  const lightbox   = document.getElementById('lightbox');
+  const lbImg      = document.getElementById('lb-img');
+  const lbCounter  = document.getElementById('lb-counter');
+  const lbClose    = document.getElementById('lb-close');
+  const lbPrev     = document.getElementById('lb-prev');
+  const lbNext     = document.getElementById('lb-next');
+
+  // Collecte toutes les photos dans l'ordre du DOM
+  const photoCards = Array.from(document.querySelectorAll('[data-lightbox]'));
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    const img = photoCards[currentIndex].querySelector('img');
+    // Charger en haute résolution (w1600 au lieu de w800)
+    lbImg.src = img.src.replace('sz=w800', 'sz=w1600');
+    lbImg.alt = img.alt;
+    lbCounter.textContent = `${currentIndex + 1} / ${photoCards.length}`;
+    lightbox.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + photoCards.length) % photoCards.length;
+    openLightbox(currentIndex);
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % photoCards.length;
+    openLightbox(currentIndex);
+  }
+
+  // Clic sur une photo
+  photoCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      openLightbox(parseInt(card.dataset.index, 10));
+    });
+  });
+
+  // Boutons
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', showPrev);
+  lbNext.addEventListener('click', showNext);
+
+  // Clic hors image = fermer
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === lightbox.querySelector('.lb__img-wrap')) {
+      closeLightbox();
+    }
+  });
+
+  // Clavier : ←  → Échap
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.hasAttribute('hidden')) return;
+    if (e.key === 'ArrowLeft')  showPrev();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
 })();
