@@ -166,18 +166,14 @@ img {
   line-height: 2.2;
 }
 
-/* résidence — lisible mais sobre, tout en bas */
+/* résidence — dans le flux, sous Fiction·Pub·Vidéo, très sobre */
 .hero__residence {
-  position: absolute;
-  bottom: 0.8rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 3rem;
   font-size: 0.6rem;
   letter-spacing: 1px;
   color: #606060;
   line-height: 1.8;
   font-style: italic;
-  white-space: nowrap;
   opacity: 0;
   animation: fadeUp 1.2s var(--ease) 1.2s forwards;
 }
@@ -786,10 +782,6 @@ img {
 
   .hero__residence {
     font-size: 0.52rem;
-    white-space: normal;
-    text-align: center;
-    padding: 0 2rem;
-    bottom: 2.5rem;
   }
 
   .photo-card img {
