@@ -139,7 +139,7 @@ img {
   font-size: 0.65rem;
   letter-spacing: 6px;
   text-transform: uppercase;
-  color: var(--grey-l);
+  color: #a0a0a0;
   margin-bottom: 2.5rem;
 }
 
@@ -162,19 +162,19 @@ img {
   font-size: 0.75rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--grey-l);
+  color: #a0a0a0;
   line-height: 2.2;
 }
 
-/* FIX : résidence — plus discrète, collée en bas du hero */
+/* résidence — lisible mais sobre, tout en bas */
 .hero__residence {
   position: absolute;
-  bottom: 5rem;                 /* au-dessus de la flèche */
+  bottom: 0.8rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   letter-spacing: 1px;
-  color: #2e2e2e;               /* très sombre — quasi invisible au premier coup d'œil */
+  color: #606060;
   line-height: 1.8;
   font-style: italic;
   white-space: nowrap;
@@ -789,7 +789,7 @@ img {
     white-space: normal;
     text-align: center;
     padding: 0 2rem;
-    bottom: 5.5rem;
+    bottom: 2.5rem;
   }
 
   .photo-card img {
