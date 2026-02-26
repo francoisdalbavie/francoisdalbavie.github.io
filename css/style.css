@@ -585,6 +585,47 @@ img {
 .reveal:nth-child(4) { transition-delay: 0.3s; }
 .reveal:nth-child(5) { transition-delay: 0.4s; }
 
+/* ── BOUTON ANNEXE TOURNAGE ── */
+.annexe-btn {
+  display: inline-block;
+  margin: 0.3rem 1rem 1rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  color: var(--grey-l);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: color 0.2s var(--ease);
+  font-style: italic;
+}
+
+.annexe-btn:hover {
+  color: var(--white);
+}
+
+/* Nom de l'album dans la lightbox */
+.lb__album-name {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--grey-m);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Titres hero sans gras */
+.showreel-hero__heading,
+.fiction-hero__heading {
+  font-weight: 300;
+}
+
 /* ── LIGHTBOX ── */
 .lb {
   position: fixed;
