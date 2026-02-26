@@ -107,66 +107,87 @@
       : 'var(--grey-d)';
   }, { passive: true });
 
-  /* ── 5. LIGHTBOX ─────────────────────────────────────────── */
-  const lightbox   = document.getElementById('lightbox');
-  const lbImg      = document.getElementById('lb-img');
-  const lbCounter  = document.getElementById('lb-counter');
-  const lbClose    = document.getElementById('lb-close');
-  const lbPrev     = document.getElementById('lb-prev');
-  const lbNext     = document.getElementById('lb-next');
+  /* ── 5. LIGHTBOX — système multi-albums ─────────────────── */
+  const lightbox    = document.getElementById('lightbox');
+  const lbImg       = document.getElementById('lb-img');
+  const lbCounter   = document.getElementById('lb-counter');
+  const lbAlbumName = document.getElementById('lb-album-name');
+  const lbClose     = document.getElementById('lb-close');
+  const lbPrev      = document.getElementById('lb-prev');
+  const lbNext      = document.getElementById('lb-next');
 
-  // Collecte toutes les photos dans l'ordre du DOM
-  const photoCards = Array.from(document.querySelectorAll('[data-lightbox]'));
+  // Charger les données albums depuis le JSON embarqué
+  const albumData = JSON.parse(document.getElementById('album-data').textContent);
+
+  let currentAlbum = null; // clé : "denis" | "speleo" | "captif"
   let currentIndex = 0;
 
-  function openLightbox(index) {
+  function thumbUrl(id, size) {
+    return `https://drive.google.com/thumbnail?id=${id}&sz=${size || 'w1600'}`;
+  }
+
+  function openLightbox(albumKey, index) {
+    currentAlbum = albumKey;
     currentIndex = index;
-    const img = photoCards[currentIndex].querySelector('img');
-    // Charger en haute résolution (w1600 au lieu de w800)
-    lbImg.src = img.src.replace('sz=w800', 'sz=w1600');
-    lbImg.alt = img.alt;
-    lbCounter.textContent = `${currentIndex + 1} / ${photoCards.length}`;
+    renderLightbox();
     lightbox.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
     lbClose.focus();
+  }
+
+  function renderLightbox() {
+    const album = albumData[currentAlbum];
+    const total = album.ids.length;
+    lbImg.src = thumbUrl(album.ids[currentIndex]);
+    lbImg.alt = `${album.label} — ${currentIndex + 1}`;
+    lbCounter.textContent = `${currentIndex + 1} / ${total}`;
+    lbAlbumName.textContent = album.label;
   }
 
   function closeLightbox() {
     lightbox.setAttribute('hidden', '');
     document.body.style.overflow = '';
     lbImg.src = '';
+    currentAlbum = null;
   }
 
   function showPrev() {
-    currentIndex = (currentIndex - 1 + photoCards.length) % photoCards.length;
-    openLightbox(currentIndex);
+    const total = albumData[currentAlbum].ids.length;
+    currentIndex = (currentIndex - 1 + total) % total;
+    renderLightbox();
   }
 
   function showNext() {
-    currentIndex = (currentIndex + 1) % photoCards.length;
-    openLightbox(currentIndex);
+    const total = albumData[currentAlbum].ids.length;
+    currentIndex = (currentIndex + 1) % total;
+    renderLightbox();
   }
 
-  // Clic sur une photo
-  photoCards.forEach((card) => {
+  // Clic sur une photo de grille
+  document.querySelectorAll('.photo-card[data-album]').forEach((card) => {
     card.addEventListener('click', () => {
-      openLightbox(parseInt(card.dataset.index, 10));
+      openLightbox(card.dataset.album, parseInt(card.dataset.index, 10));
     });
   });
 
-  // Boutons
+  // Clic sur le bouton annexe CAPTIF
+  document.querySelectorAll('.annexe-btn[data-album]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      openLightbox(btn.dataset.album, 0);
+    });
+  });
+
+  // Boutons navigation
   lbClose.addEventListener('click', closeLightbox);
   lbPrev.addEventListener('click', showPrev);
   lbNext.addEventListener('click', showNext);
 
-  // Clic hors image = fermer
+  // Clic fond = fermer
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || e.target === lightbox.querySelector('.lb__img-wrap')) {
-      closeLightbox();
-    }
+    if (e.target === lightbox) closeLightbox();
   });
 
-  // Clavier : ←  → Échap
+  // Clavier
   document.addEventListener('keydown', (e) => {
     if (lightbox.hasAttribute('hidden')) return;
     if (e.key === 'ArrowLeft')  showPrev();
