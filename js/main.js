@@ -195,4 +195,39 @@
     if (e.key === 'Escape')     closeLightbox();
   });
 
+  /* ── 6. YOUTUBE FAÇADE — chargement différé ─────────────── */
+  // Certaines vidéos YouTube ne servent pas maxresdefault.jpg —
+  // on tente d'abord cette qualité, et on bascule sur hqdefault si l'image
+  // retourne une image "placeholder" (largeur ≤ 120px, typiquement 120×90).
+  document.querySelectorAll('.yt-facade').forEach((facade) => {
+    const id = facade.dataset.id;
+    const img = facade.querySelector('img');
+
+    // Fallback qualité d'image : maxres → hq
+    if (img) {
+      const checker = new Image();
+      checker.onload = function () {
+        if (this.naturalWidth <= 120) {
+          img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+        }
+      };
+      checker.src = img.src;
+    }
+
+    // Clic : injecter l'iframe avec autoplay
+    facade.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.title = facade.dataset.title || 'Vidéo';
+
+      // Supprimer image + bouton, insérer l'iframe
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+      // Désactiver le curseur hover une fois la vidéo lancée
+      facade.classList.remove('yt-facade');
+    });
+  });
+
 })();
