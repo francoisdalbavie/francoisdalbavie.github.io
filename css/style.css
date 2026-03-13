@@ -135,6 +135,25 @@ img {
   animation: fadeUp 1s var(--ease) 0.3s forwards;
 }
 
+/* ── AVATAR ── */
+.hero__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 2rem;
+  filter: grayscale(20%) contrast(1.05);
+  border: 1px solid var(--grey-m);
+  opacity: 0.85;
+  transition: opacity 0.3s var(--ease), filter 0.3s var(--ease);
+}
+
+.hero__avatar:hover {
+  opacity: 1;
+  filter: grayscale(0%) contrast(1);
+}
+
 .hero__eyebrow {
   font-size: 0.65rem;
   letter-spacing: 6px;
