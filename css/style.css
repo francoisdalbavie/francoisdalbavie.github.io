@@ -137,8 +137,8 @@ img {
 
 /* ── AVATAR ── */
 .hero__avatar {
-  width: 88px;
-  height: 88px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -882,6 +882,13 @@ img {
 
   .hero__residence {
     font-size: 0.52rem;
+  }
+
+  .hero__avatar {
+    width: 88px;
+    height: 88px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .photo-card img {
