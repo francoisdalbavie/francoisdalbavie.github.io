@@ -39,6 +39,16 @@
     el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
   });
 
+  // Délégation pour les éléments dynamiques (yt-facade après clic, etc.)
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target.closest('a, button, .photo-card, .yt-facade, .video-card__embed, .nav__link');
+    if (target) {
+      cursor.classList.add('cursor--hover');
+    } else {
+      cursor.classList.remove('cursor--hover');
+    }
+  });
+
   /* ── 2. SCROLL REVEAL ────────────────────────────────────── */
   // On ajoute la classe .reveal à tous les éléments à animer
   const revealSelectors = [
