@@ -31,7 +31,7 @@
 
   // Agrandir le curseur sur les éléments cliquables
   const hoverTargets = document.querySelectorAll(
-    'a, button, .video-card__embed, .photo-card, .nav__link'
+    'a, button, .video-card__embed, .yt-facade, .photo-card, .nav__link'
   );
 
   hoverTargets.forEach((el) => {
