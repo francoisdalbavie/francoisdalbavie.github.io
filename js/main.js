@@ -29,10 +29,19 @@
   }
   animateCursor();
 
-  // Agrandir le curseur sur les éléments cliquables — délégation globale
-  // (fonctionne aussi sur les éléments dynamiques comme .yt-facade après clic)
+  // Agrandir le curseur sur les éléments cliquables
+  const hoverTargets = document.querySelectorAll(
+    'a, button, .video-card__embed, .yt-facade, .photo-card, .nav__link'
+  );
+
+  hoverTargets.forEach((el) => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('cursor--hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
+  });
+
+  // Délégation pour les éléments dynamiques (yt-facade après clic, etc.)
   document.addEventListener('mouseover', (e) => {
-    const target = e.target.closest('a, button, .photo-card, .yt-facade, .video-card__embed, .nav__link, .annexe-btn');
+    const target = e.target.closest('a, button, .photo-card, .yt-facade, .video-card__embed, .nav__link');
     if (target) {
       cursor.classList.add('cursor--hover');
     } else {
