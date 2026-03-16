@@ -656,9 +656,9 @@ img {
 
 .contact__link {
   display: inline-block;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: none;
   color: var(--grey-l);
   border-bottom: 1px solid var(--grey-m);
   padding-bottom: 4px;
