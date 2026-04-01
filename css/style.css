@@ -118,27 +118,6 @@ img {
   overflow: hidden;
 }
 
-/* ── FOND CINÉMATIQUE ── */
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://drive.google.com/thumbnail?id=18ki-lE7UtqblJq-gDnGIfDhWNSF1072b&sz=w1200');
-  background-size: cover;
-  background-position: center top;
-  filter: grayscale(60%) brightness(0.18) blur(2px);
-  transform: scale(1.05); /* évite les bords blancs avec le blur */
-  z-index: 0;
-}
-
-/* S'assurer que le contenu du hero passe au-dessus du fond */
-.hero__inner,
-.hero__scroll,
-.hero::before {
-  position: relative;
-  z-index: 1;
-}
-
-
 /* ligne verticale décorative */
 .hero::before {
   content: '';
@@ -689,22 +668,6 @@ img {
 .contact__link:hover {
   color: var(--white);
   border-color: var(--white);
-}
-
-/* ── PLACEHOLDER VIDÉO (à venir) ── */
-.video-card__embed--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--dark);
-  border: 1px dashed var(--grey-d);
-}
-
-.video-card__coming {
-  font-size: 0.6rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--grey-m);
 }
 
 /* ── FOOTER ── */
