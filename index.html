@@ -35,6 +35,8 @@
 
   <!-- ════ HEADER ════ -->
   <header class="hero" id="top">
+    <!-- Photo de fond cinématique -->
+    <div class="hero__bg" aria-hidden="true"></div>
     <div class="hero__inner">
       <img
         class="hero__avatar"
@@ -56,6 +58,7 @@
   <nav class="nav" id="nav" role="navigation" aria-label="Menu principal">
     <ul class="nav__list">
       <li><a href="#publicite"    class="nav__link">Publicités</a></li>
+      <li><a href="#corporate"    class="nav__link">Corporate</a></li>
       <li><a href="#fiction"      class="nav__link">Fiction</a></li>
       <li><a href="#photos"       class="nav__link">Photos</a></li>
       <li><a href="#documentaire" class="nav__link">Documentaire</a></li>
@@ -135,10 +138,73 @@
       </div>
     </section>
 
-    <!-- ════ 02 — FICTION ════ -->
-    <section class="section" id="fiction">
+    <!-- ════ 02 — CORPORATE ════ -->
+    <section class="section" id="corporate">
       <div class="section__header">
         <span class="section__num">02</span>
+        <h2 class="section__title">Corporate</h2>
+      </div>
+
+      <!-- Capsule Amel Bent en hero -->
+      <div class="fiction-hero">
+        <div class="fiction-hero__embed yt-facade" data-id="bckHCeemi2I" data-title="Capsule Amel Bent">
+          <img src="https://img.youtube.com/vi/bckHCeemi2I/maxresdefault.jpg" alt="Capsule Amel Bent" loading="lazy" />
+          <button class="yt-play" aria-label="Lire Capsule Amel Bent"></button>
+        </div>
+        <div class="fiction-hero__text">
+          <p class="fiction-hero__eyebrow">Captation live</p>
+          <h3 class="fiction-hero__heading">Amel Bent</h3>
+          <p class="fiction-hero__body">
+            Capsule de captation live — montage court format.
+          </p>
+        </div>
+      </div>
+
+      <div class="divider"><span>Contenu de marque</span></div>
+
+      <div class="video-grid">
+
+        <article class="video-card">
+          <div class="video-card__embed yt-facade" data-id="SWfTzHSbOX4" data-title="Le Ptit Bazar — Atelier brocante">
+            <img src="https://img.youtube.com/vi/SWfTzHSbOX4/maxresdefault.jpg" alt="Le Ptit Bazar" loading="lazy" />
+            <button class="yt-play" aria-label="Lire Le Ptit Bazar"></button>
+          </div>
+          <p class="video-card__label">Le Ptit Bazar — Ressourcerie, La Celle-Saint-Cloud</p>
+          <p class="video-card__sublabel video-card__sublabel--lower">Captation smartphone par les équipes, montage DaVinci Resolve en demi-journée. L'enjeu : rendre exploitable une matière peu exploitable, pour un usage interne auprès des bénévoles.</p>
+        </article>
+
+        <!-- Emplacement vidéos à venir -->
+        <article class="video-card video-card--placeholder">
+          <div class="video-card__embed video-card__embed--empty">
+            <span class="video-card__coming">À venir</span>
+          </div>
+          <p class="video-card__label">Le Ptit Bazar — Atelier 2</p>
+          <p class="video-card__sublabel video-card__sublabel--lower">En cours de montage</p>
+        </article>
+
+        <article class="video-card video-card--placeholder">
+          <div class="video-card__embed video-card__embed--empty">
+            <span class="video-card__coming">À venir</span>
+          </div>
+          <p class="video-card__label">Le Ptit Bazar — Atelier 3</p>
+          <p class="video-card__sublabel video-card__sublabel--lower">En cours de montage</p>
+        </article>
+
+        <article class="video-card video-card--placeholder">
+          <div class="video-card__embed video-card__embed--empty">
+            <span class="video-card__coming">À venir</span>
+          </div>
+          <p class="video-card__label">Le Ptit Bazar — Atelier 4</p>
+          <p class="video-card__sublabel video-card__sublabel--lower">En cours de montage</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ════ 03 — FICTION ════ -->
+    <section class="section" id="fiction">
+      <div class="section__header">
+        <span class="section__num">03</span>
         <h2 class="section__title">Fiction</h2>
       </div>
 
@@ -197,10 +263,10 @@
       </div>
     </section>
 
-    <!-- ════ 03 — PHOTOGRAPHIE ════ -->
+    <!-- ════ 04 — PHOTOGRAPHIE ════ -->
     <section class="section" id="photos">
       <div class="section__header">
-        <span class="section__num">03</span>
+        <span class="section__num">04</span>
         <h2 class="section__title">Photographie</h2>
       </div>
 
@@ -264,10 +330,10 @@
 
     </section>
 
-    <!-- ════ 04 — DOCUMENTAIRE ════ -->
+    <!-- ════ 05 — DOCUMENTAIRE ════ -->
     <section class="section" id="documentaire">
       <div class="section__header">
-        <span class="section__num">04</span>
+        <span class="section__num">05</span>
         <h2 class="section__title">Documentaire</h2>
       </div>
 
@@ -289,8 +355,8 @@
       <p class="contact__eyebrow">Contact</p>
       <h2 class="contact__title">Un projet ?</h2>
       <!-- Email direct -->
-      <a class="contact__link" href="mailto:dalbaviefrancois@gmail.com">
-        dalbaviefrancois@gmail.com
+      <a class="contact__link" href="/cdn-cgi/l/email-protection#0a6e6b66686b7c636f6c786b64696563794a6d676b636624696567">
+        <span class="__cf_email__" data-cfemail="eb8f8a87898a9d828e8d998a8588848298ab8c868a8287c5888486">[email&#160;protected]</span>
       </a>
     </section>
 
@@ -314,7 +380,7 @@
   </div>
 
   <!-- ════ DONNÉES ALBUMS ════ -->
-  <script id="album-data" type="application/json">
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script id="album-data" type="application/json">
   {
     "denis": {
       "label": "Portrait de Denis",
