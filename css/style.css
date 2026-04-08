@@ -5,7 +5,6 @@
    Police : Jost (titres) + Barlow (corps)
    ============================================================ */
 
-/* ── RESET & BASE ── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -18,8 +17,8 @@
   --grey-d:  #1c1c1c;
   --grey-m:  #3a3a3a;
   --grey-l:  #6a6a6a;
-  --white:   #f0ece8;       /* blanc chaud — pellicule */
-  --accent:  #c8c0b0;       /* beige cendré */
+  --white:   #f0ece8;
+  --accent:  #c8c0b0;
 
   --font-title: 'Jost', sans-serif;
   --font-body:  'Barlow', sans-serif;
@@ -32,7 +31,6 @@ html {
   font-size: 16px;
 }
 
-/* FIX : prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { transition: none !important; }
@@ -49,7 +47,7 @@ body {
   color: var(--white);
   line-height: 1.7;
   overflow-x: hidden;
-  cursor: none; /* curseur custom via JS */
+  cursor: none;
 }
 
 a {
@@ -62,7 +60,6 @@ img {
   max-width: 100%;
 }
 
-/* ── CUSTOM CURSOR ── */
 .cursor {
   position: fixed;
   top: 0; left: 0;
@@ -84,7 +81,6 @@ img {
   height: 32px;
 }
 
-/* ── GRAIN OVERLAY ── */
 .grain {
   position: fixed;
   inset: -50%;
@@ -99,12 +95,11 @@ img {
 
 @keyframes grain {
   0%, 100% { transform: translate(0, 0); }
-  25%       { transform: translate(-2%, -1%); }
-  50%       { transform: translate(1%, 2%); }
-  75%       { transform: translate(-1%, 1%); }
+  25%      { transform: translate(-2%, -1%); }
+  50%      { transform: translate(1%, 2%); }
+  75%      { transform: translate(-1%, 1%); }
 }
 
-/* ── HERO ── */
 .hero {
   position: relative;
   min-height: 100svh;
@@ -113,45 +108,44 @@ img {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 5vw 5rem;
+  padding: 7rem 5vw 6rem;
   border-bottom: 1px solid var(--grey-d);
   overflow: hidden;
 }
 
-/* ligne verticale décorative */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%;
-  width: 1px;
-  height: 15%;
-  background: linear-gradient(to bottom, transparent, var(--grey-m));
-}
-
 .hero__inner {
-  max-width: 700px;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 1s var(--ease) 0.3s forwards;
 }
 
-/* ── AVATAR ── */
-.hero__avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
+.hero__portrait {
+  width: clamp(220px, 26vw, 340px);
+  aspect-ratio: 4 / 5;
   margin: 0 auto 2rem;
-  filter: grayscale(20%) contrast(1.05);
-  border: 1px solid var(--grey-m);
-  opacity: 0.85;
-  transition: opacity 0.3s var(--ease), filter 0.3s var(--ease);
+  overflow: hidden;
+  border: 1px solid var(--grey-d);
+  background: var(--dark);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
 }
 
-.hero__avatar:hover {
-  opacity: 1;
-  filter: grayscale(0%) contrast(1);
+.hero__portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  filter: grayscale(10%) contrast(1.03) brightness(0.96);
+  transition: transform 0.45s var(--ease), filter 0.3s var(--ease);
+}
+
+.hero__portrait:hover .hero__portrait-img {
+  transform: scale(1.015);
+  filter: grayscale(0%) contrast(1.02) brightness(1);
 }
 
 .hero__eyebrow {
@@ -159,45 +153,47 @@ img {
   letter-spacing: 6px;
   text-transform: uppercase;
   color: #a0a0a0;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.1rem;
 }
 
 .hero__title {
   font-family: var(--font-title);
-  font-size: clamp(1.6rem, 3vw, 3rem);
+  font-size: clamp(1.9rem, 4vw, 3.6rem);
   font-weight: 200;
-  line-height: 1.2;
-  letter-spacing: 14px;
+  line-height: 1.15;
+  letter-spacing: 10px;
   text-transform: uppercase;
   color: var(--white);
-  padding: 1.4rem 0;
-  border-top: 1px solid var(--grey-m);
-  border-bottom: 1px solid var(--grey-m);
   width: 100%;
 }
 
 .hero__sub {
-  margin-top: 2.5rem;
+  margin-top: 1.2rem;
   font-size: 0.75rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #a0a0a0;
-  line-height: 2.2;
+  line-height: 2;
 }
 
-/* résidence — dans le flux, sous Fiction·Pub·Vidéo, très sobre */
-.hero__residence {
-  margin-top: 3rem;
-  font-size: 0.6rem;
-  letter-spacing: 1px;
-  color: #606060;
-  line-height: 1.8;
-  font-style: italic;
-  opacity: 0;
-  animation: fadeUp 1.2s var(--ease) 1.2s forwards;
+.hero__intro {
+  max-width: 660px;
+  margin: 1.5rem auto 0;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: #b9b1a7;
 }
 
-/* flèche scroll */
+.hero__gear {
+  max-width: 760px;
+  margin: 1rem auto 0;
+  font-size: 0.68rem;
+  line-height: 1.9;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #7b746b;
+}
+
 .hero__scroll {
   position: absolute;
   bottom: 2.5rem;
@@ -234,12 +230,11 @@ img {
   100% { height: 0; top: 100%; }
 }
 
-/* ── NAV ── */
 .nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(8,8,8,0.9);
+  background: rgba(8, 8, 8, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--grey-d);
@@ -284,7 +279,6 @@ img {
   transform: scaleX(1);
 }
 
-/* FIX : nav CTA visuellement distinct */
 .nav__link--cta {
   margin-left: auto;
   color: var(--accent);
@@ -295,7 +289,6 @@ img {
   color: var(--white);
 }
 
-/* ── SECTIONS ── */
 .section {
   max-width: 1280px;
   margin: 0 auto;
@@ -324,7 +317,6 @@ img {
   letter-spacing: 1px;
 }
 
-/* ── VIDEO GRID ── */
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -359,12 +351,10 @@ img {
   border: none;
 }
 
-/* ── YOUTUBE FACADE ── */
 .yt-facade {
   cursor: pointer;
 }
 
-/* L'image de miniature couvre tout le conteneur */
 .yt-facade img {
   position: absolute;
   inset: 0;
@@ -381,7 +371,6 @@ img {
   filter: brightness(0.9);
 }
 
-/* Bouton play — cercle blanc semi-transparent */
 .yt-play {
   position: absolute;
   top: 50%;
@@ -402,11 +391,9 @@ img {
               border-color 0.25s var(--ease),
               transform 0.25s var(--ease);
   z-index: 2;
-  /* Triangle ▶ en CSSpur */
   padding: 0;
 }
 
-/* Triangle ▶ dessiné en CSS */
 .yt-play::after {
   content: '';
   display: block;
@@ -415,7 +402,7 @@ img {
   border-style: solid;
   border-width: 10px 0 10px 18px;
   border-color: transparent transparent transparent rgba(240, 236, 232, 0.9);
-  margin-left: 4px; /* centrage optique */
+  margin-left: 4px;
 }
 
 .yt-facade:hover .yt-play {
@@ -424,7 +411,6 @@ img {
   transform: translate(-50%, -50%) scale(1.08);
 }
 
-/* Une fois cliquée, l'iframe injectée prend toute la place */
 .yt-facade iframe {
   position: absolute;
   inset: 0;
@@ -433,8 +419,6 @@ img {
   border: none;
   z-index: 3;
 }
-
-
 
 .video-card__label {
   padding: 0.9rem 1rem 0.4rem;
@@ -457,7 +441,6 @@ img {
   font-style: italic;
 }
 
-/* ── SHOWREEL HERO (Publicités) ── */
 .showreel-hero {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -508,7 +491,6 @@ img {
   max-width: 320px;
 }
 
-/* ── FICTION HERO ── */
 .fiction-hero {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -559,7 +541,6 @@ img {
   max-width: 320px;
 }
 
-/* ── DIVIDER ── */
 .divider {
   display: flex;
   align-items: center;
@@ -579,7 +560,6 @@ img {
   background: var(--grey-d);
 }
 
-/* ── PHOTO GRID ── */
 .photo-series-title {
   font-family: var(--font-title);
   font-size: 1.4rem;
@@ -610,7 +590,6 @@ img {
   cursor: pointer;
 }
 
-/* FIX : hauteur fixe pour une grille homogène */
 .photo-card img {
   width: 100%;
   height: 260px;
@@ -625,12 +604,10 @@ img {
   filter: grayscale(0%) contrast(1);
 }
 
-/* ── DOCUMENTAIRE ── */
 .doc-single {
   max-width: 700px;
 }
 
-/* ── CONTACT ── */
 .section--contact {
   border-bottom: none;
   padding: 8rem 5vw;
@@ -670,7 +647,6 @@ img {
   border-color: var(--white);
 }
 
-/* ── FOOTER ── */
 .footer {
   display: flex;
   justify-content: space-between;
@@ -691,12 +667,10 @@ img {
   color: var(--white);
 }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Éléments à révéler au scroll */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -708,13 +682,11 @@ img {
   transform: none;
 }
 
-/* stagger pour les grilles */
 .reveal:nth-child(2) { transition-delay: 0.1s; }
 .reveal:nth-child(3) { transition-delay: 0.2s; }
 .reveal:nth-child(4) { transition-delay: 0.3s; }
 .reveal:nth-child(5) { transition-delay: 0.4s; }
 
-/* ── BOUTON ANNEXE TOURNAGE ── */
 .annexe-btn {
   display: inline-block;
   margin: 0.3rem 1rem 1rem;
@@ -735,12 +707,11 @@ img {
   color: var(--white);
 }
 
-/* ── LIGHTBOX ── */
 .lb {
   position: fixed;
   inset: 0;
   z-index: 9000;
-  background: rgba(0,0,0,0.96);
+  background: rgba(0, 0, 0, 0.96);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -840,7 +811,6 @@ img {
   white-space: nowrap;
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .fiction-hero,
   .showreel-hero {
@@ -880,122 +850,10 @@ img {
 
   .cursor { display: none; }
 
-  .hero__residence {
-    font-size: 0.52rem;
+  .hero {
+    padding: 6rem 1.5rem 5rem;
   }
 
- /* ── HERO ── */
-.hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 5vw 5rem;
-  border-bottom: 1px solid var(--grey-d);
-  overflow: hidden;
-}
-
-/* on retire la ligne verticale */
-.hero::before {
-  display: none;
-}
-
-.hero__inner {
-  max-width: 820px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s var(--ease) 0.3s forwards;
-}
-
-/* ── PORTRAIT HERO ── */
-.hero__portrait {
-  width: clamp(220px, 26vw, 340px);
-  aspect-ratio: 4 / 5;
-  margin: 0 auto 2rem;
-  overflow: hidden;
-  border: 1px solid var(--grey-d);
-  background: var(--dark);
-}
-
-.hero__portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: grayscale(10%) contrast(1.03) brightness(0.96);
-  transition: transform 0.45s var(--ease), filter 0.3s var(--ease);
-}
-
-.hero__portrait:hover .hero__portrait-img {
-  transform: scale(1.015);
-  filter: grayscale(0%) contrast(1.02) brightness(1);
-}
-
-.hero__eyebrow {
-  font-size: 0.65rem;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: #a0a0a0;
-  margin-bottom: 1.4rem;
-}
-
-.hero__title {
-  font-family: var(--font-title);
-  font-size: clamp(1.9rem, 4vw, 3.6rem);
-  font-weight: 200;
-  line-height: 1.15;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  color: var(--white);
-  padding: 0;
-  border: none;
-  width: 100%;
-}
-
-.hero__sub {
-  margin-top: 1.2rem;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #a0a0a0;
-  line-height: 2;
-}
-
-.hero__intro {
-  max-width: 640px;
-  margin: 1.4rem auto 0;
-  font-size: 0.95rem;
-  line-height: 1.9;
-  color: #b9b1a7;
-}
-
-.hero__gear {
-  max-width: 760px;
-  margin: 1rem auto 0;
-  font-size: 0.68rem;
-  line-height: 1.9;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  color: #7b746b;
-}
-
-/* tu peux garder la résidence plus bas si tu veux,
-   ou la retirer si ça commence à faire beaucoup */
-.hero__residence {
-  margin-top: 2rem;
-  font-size: 0.6rem;
-  letter-spacing: 1px;
-  color: #606060;
-  line-height: 1.8;
-  font-style: italic;
-  opacity: 0;
-  animation: fadeUp 1.2s var(--ease) 1.2s forwards;
-}
-
-@media (max-width: 600px) {
   .hero__portrait {
     width: min(64vw, 280px);
     margin-bottom: 1.5rem;
@@ -1003,6 +861,7 @@ img {
 
   .hero__title {
     letter-spacing: 6px;
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
   }
 
   .hero__intro {
@@ -1012,9 +871,7 @@ img {
 
   .hero__gear {
     font-size: 0.6rem;
-    letter-spacing: 1.2px;
-  }
-}
+    letter-spacing: 1.1px;
   }
 
   .photo-card img {
