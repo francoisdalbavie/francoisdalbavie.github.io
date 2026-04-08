@@ -884,11 +884,137 @@ img {
     font-size: 0.52rem;
   }
 
-  .hero__avatar {
-    width: 88px;
-    height: 88px;
-    margin-left: auto;
-    margin-right: auto;
+ /* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 5vw 5rem;
+  border-bottom: 1px solid var(--grey-d);
+  overflow: hidden;
+}
+
+/* on retire la ligne verticale */
+.hero::before {
+  display: none;
+}
+
+.hero__inner {
+  max-width: 820px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s var(--ease) 0.3s forwards;
+}
+
+/* ── PORTRAIT HERO ── */
+.hero__portrait {
+  width: clamp(220px, 26vw, 340px);
+  aspect-ratio: 4 / 5;
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  border: 1px solid var(--grey-d);
+  background: var(--dark);
+}
+
+.hero__portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(10%) contrast(1.03) brightness(0.96);
+  transition: transform 0.45s var(--ease), filter 0.3s var(--ease);
+}
+
+.hero__portrait:hover .hero__portrait-img {
+  transform: scale(1.015);
+  filter: grayscale(0%) contrast(1.02) brightness(1);
+}
+
+.hero__eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  margin-bottom: 1.4rem;
+}
+
+.hero__title {
+  font-family: var(--font-title);
+  font-size: clamp(1.9rem, 4vw, 3.6rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 0;
+  border: none;
+  width: 100%;
+}
+
+.hero__sub {
+  margin-top: 1.2rem;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  line-height: 2;
+}
+
+.hero__intro {
+  max-width: 640px;
+  margin: 1.4rem auto 0;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: #b9b1a7;
+}
+
+.hero__gear {
+  max-width: 760px;
+  margin: 1rem auto 0;
+  font-size: 0.68rem;
+  line-height: 1.9;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #7b746b;
+}
+
+/* tu peux garder la résidence plus bas si tu veux,
+   ou la retirer si ça commence à faire beaucoup */
+.hero__residence {
+  margin-top: 2rem;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  color: #606060;
+  line-height: 1.8;
+  font-style: italic;
+  opacity: 0;
+  animation: fadeUp 1.2s var(--ease) 1.2s forwards;
+}
+
+@media (max-width: 600px) {
+  .hero__portrait {
+    width: min(64vw, 280px);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__title {
+    letter-spacing: 6px;
+  }
+
+  .hero__intro {
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+
+  .hero__gear {
+    font-size: 0.6rem;
+    letter-spacing: 1.2px;
+  }
+}
   }
 
   .photo-card img {
