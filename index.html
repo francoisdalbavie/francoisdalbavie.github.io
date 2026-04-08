@@ -29,15 +29,58 @@
   <link rel="stylesheet" href="css/style.css" />
 
   <style>
+    .hero__avatar { display: none; }
 
-    /* Hero : centrage vertical et horizontal du texte */
     .hero {
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
       position: relative !important;
+      min-height: 100svh !important;
+      padding: 4rem 1.5rem 6rem !important;
     }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+      text-align: center;
+      width: min(100%, 880px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__title {
+      margin-top: 0.35rem;
+    }
+
+    .hero__sub {
+      margin-top: 2.9rem;
+    }
+
+    .hero__gear {
+      margin-top: 2.2rem;
+      max-width: 760px;
+      font-size: 0.72rem;
+      line-height: 2;
+      letter-spacing: 1.2px;
+      color: #8d8d8d;
+    }
+
+    .hero__residence {
+      margin-top: 2.4rem;
+      max-width: 560px;
+      font-size: 0.56rem;
+      letter-spacing: 1.4px;
+      color: #5f5f5f;
+      line-height: 1.9;
+      font-style: normal;
+      opacity: 0;
+      animation: fadeUp 1.2s var(--ease) 1.4s forwards;
+    }
+
     .hero__scroll {
       position: absolute !important;
       bottom: 2rem !important;
@@ -45,50 +88,7 @@
       transform: translateX(-50%) !important;
       z-index: 2 !important;
     }
-    /* Le hero__inner garde son z-index au-dessus, centré */
-    .hero__inner {
-      position: relative;
-      z-index: 1;
-      margin: 0 auto;
-      padding: 0 2rem;
-      text-align: center;
-      width: 100%;
-      max-width: 1080px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
 
-    .hero__eyebrow {
-      margin-bottom: 3.2rem !important;
-    }
-
-    .hero__title {
-      max-width: 1100px;
-      padding: 1.8rem 0 !important;
-    }
-
-    .hero__sub {
-      margin-top: 3rem !important;
-      letter-spacing: 2.4px;
-    }
-
-    .hero__residence {
-      margin-top: 3.4rem !important;
-      max-width: 760px;
-      line-height: 2.1;
-    }
-
-    .hero__materials {
-      margin-top: 2.1rem;
-      max-width: 840px;
-      font-size: 0.68rem;
-      letter-spacing: 0.7px;
-      line-height: 1.95;
-      color: #787878;
-    }
-
-    /* Photos dans les sections — marge droite */
     #publicite, #fiction { position: relative; }
 
     .section__photo-thumb {
@@ -102,9 +102,6 @@
       filter: grayscale(25%) contrast(1.05);
       opacity: 0.7;
       transition: opacity 0.3s, filter 0.3s;
-    }
-
-    .section__photo-thumb {
       cursor: zoom-in;
     }
 
@@ -113,7 +110,6 @@
       filter: grayscale(0%) contrast(1);
     }
 
-    /* Lightbox simple pour les photos thumb */
     .thumb-lb {
       display: none;
       position: fixed;
@@ -150,35 +146,28 @@
     @media (max-width: 1300px) {
       .section__photo-thumb { right: -90px; width: 80px; }
     }
+
     @media (max-width: 1100px) {
       .section__photo-thumb { display: none; }
     }
 
     @media (max-width: 768px) {
-      .hero__inner {
-        padding: 0 1.4rem;
-      }
-
-      .hero__eyebrow {
-        margin-bottom: 2.2rem !important;
-      }
-
-      .hero__title {
-        padding: 1.25rem 0 !important;
+      .hero {
+        padding: 3.5rem 1.2rem 5.5rem !important;
       }
 
       .hero__sub {
-        margin-top: 2.2rem !important;
+        margin-top: 2.3rem;
+      }
+
+      .hero__gear {
+        font-size: 0.66rem;
+        line-height: 1.9;
       }
 
       .hero__residence {
-        margin-top: 2.5rem !important;
-      }
-
-      .hero__materials {
-        margin-top: 1.6rem;
-        font-size: 0.64rem;
-        line-height: 1.85;
+        margin-top: 2rem;
+        font-size: 0.52rem;
       }
     }
   </style>
@@ -192,19 +181,13 @@
   <header class="hero" id="top">
 
     <div class="hero__inner">
-      <!-- avatar original masqué via CSS -->
       <p class="hero__eyebrow">Réalisateur — Paris</p>
       <h1 class="hero__title">François Dalbavie</h1>
       <p class="hero__sub">Fiction · Publicité · Vidéo créative</p>
-      <p class="hero__residence">
-        résidence d'écriture — long-métrage thriller néonoir<br />
-        La Rotonde Stalingrad
-      </p>
-      <p class="hero__materials">
-        Configuration légère personnelle disponible selon les projets : Blackmagic Cinema Camera 6K, optique cinéma Jupiter Sirui 28–85, filtres Schneider ND &amp; polarisant 4x5.6, stabilisateur, trépied, cross épaule, COB 300, micro canon.
-      </p>
+      <p class="hero__gear">Configuration légère personnelle disponible selon les projets : Blackmagic Cinema Camera 6K, optique cinéma Jupiter Sirui 28–85, filtres Schneider ND &amp; polarisant 4x5.6, stabilisateur, trépied, cross épaule, COB 300, micro canon.</p>
+      <p class="hero__residence">En résidence d’écriture de long métrage — La Rotonde Stalingrad</p>
     </div>
-    <a href="#publicite" class="hero__scroll" aria-label="Défiler"><span></span></a>
+    <a href="#publicite" class="hero__scroll aria-label="Défiler"><span></span></a>
   </header>
 
   <!-- ════ NAV ════ -->
@@ -446,9 +429,7 @@
       <p class="contact__eyebrow">Contact</p>
       <h2 class="contact__title">Un projet ?</h2>
       <!-- Email direct -->
-      <a class="contact__link" href="/cdn-cgi/l/email-protection#acc8cdc0cecddac5c9cadecdc2cfc3c5dfeccbc1cdc5c082cfc3c1">
-        <span class="__cf_email__" data-cfemail="6602070a0407100f030014070805090f1526010b070f0a4805090b">[email&#160;protected]</span>
-      </a>
+      <a class="contact__link" href="mailto:dalbaviefrancois@gmail.com">dalbaviefrancois@gmail.com</a>
     </section>
 
   </main>
@@ -471,130 +452,136 @@
   </div>
 
   <!-- ════ DONNÉES ALBUMS ════ -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script id="album-data" type="application/json">
-  {
-    "denis": {
-      "label": "Portrait de Denis",
-      "ids": [
-        "1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M",
-        "1JDWxV9p4mhMXpzW13XATJznB88VrMsa7",
-        "1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm",
-        "1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe",
-        "1ODajiSv8YPJBsDBckNXb_ZQVK65MVg2v",
-        "1lt0LMnwB4hq5-6vL9NpeessLfoVARTId",
-        "1LTOm89NRPEWG455kqfweAaQ17Dt88LIM",
-        "1ZqkcamlapLxYEF9MdX_SOIM0gLv79TJ4",
-        "1dSDSepqmOfmHrC8lRXpsNJGuBSfvx9X_",
-        "1BDb-fwXTPNT9is8kVh8El2TeFipckeAp",
-        "1HwDFJ5yom7KK5sdbFaKUMm-5ESFe1T8N",
-        "19u8YNoR0nQ9I-cflrRbnH2K_Hbxe8Dfa",
-        "15DeGfsiXAuzrLeDcYizfL9lGCLee5nqx",
-        "1lE3cdlo13oH_he9vZ3M_J_2smEQoB4Nm",
-        "1JKMpEOD_VXiQJXhxvBIrIx8hF4UUnafY",
-        "1GUoUeYDDbh-FwLvQoobmqT1PrdeRR66m"
-      ]
-    },
-    "speleo": {
-      "label": "Spéléologie — Périgord Noir",
-      "ids": [
-        "1kNCYcQ3Ty4yc64tHuyjxCoGubMrqIRUi",
-        "17Cel8TwMFKBiFYo2_3bm9ECT0Iry2fWH",
-        "1H4Ij8TC41-zluhJ0tn_fCroonA9EM9MN",
-        "1YsWC_jhYNCUGPN_uc6Mp5fBNGhdjS9mU",
-        "1fwLEW5FSYlxxJXeZzxLRl7AGKb5xyxtN",
-        "1boGC92qFMGhglKDJsQPcWhG2w41BdPCd",
-        "1FzEV93_HltZKIjgJA5_uUH4BucVZLE6c",
-        "1dLG_BONFes7MrVlF0W56bmadp1wZqTgA",
-        "1JngzplHxGt9wFLGXBcQZaAHKy7w0jDSl",
-        "1-dD3z4fqWYxtHEOlaF22jGHDNDeSSkAu",
-        "1HC3DOG1Ei0ZO_tNB1vR4-OroBYW7HQcy",
-        "13nwAkSs4ijMu1MGNHETJwmAXnEgkBwdJ",
-        "1rQF82guYOgCmnT1cv5j-fzearn1FYLEU",
-        "1sYM-HuRqiCW6-iuPFsQYx7WFwpLpZHJa",
-        "1gPJuA-3yJUCdpISzR6g0rIue0yoA7Dn_",
-        "1c9hARo_xS-87XD-mBkynOHWZ52s6BTEz",
-        "13iP7MxohtTywzi6S01eAObZXTfDWGsWX",
-        "1E1w-Gu-tFz__WQ86A6IJeg-NRjirGSDo",
-        "1P_Gd9M1VNOPIW_bojau67qvfdPXwexNW",
-        "1KFHQc1ugmog9hji9G0GDEDw-IuyHMcXx",
-        "1O6tB2vjr3khhHYWypkWe02hbt6D7ueir",
-        "1erNUhUn-1uHuONl8UoI8FLcQWu6geare",
-        "1KZqCLKnOXVIAf7cOfFJ3L2X_p1GSo31L",
-        "10nWioAMwpjqKuQ2JiBVvj0Q3hYrDSG8o",
-        "17TGuwFjC-_Mymw0bk81hNo76UsJMnnUa",
-        "1aBLWMsF5XB7J8MlYn4A_h0MHWWGRrmyI",
-        "1KVvQ726uvxtkWoM8rzV_VknoN4Iw_HB_"
-      ]
-    },
-    "captif": {
-      "label": "CAPTIF — Coulisses du tournage",
-      "ids": [
-        "1S3rEThh01-K8c4Q3s_4aDA03K5gKHQZr",
-        "1oZiXhpFEjNOpaEHNc-4HOZGtqUEsFRab",
-        "1wDXS94A2I2-ZHYNxOduZM7079tzJPWrg",
-        "1Ea1_USNF1v1l-qsEIDbvUAwap5tmsqtV",
-        "1zBQxnjKZrqYDVv29kJAjkmtB5kkBnQ4Y",
-        "1UGRlZwn4iHWWCNLpvF2yLhC1tGCx2pgQ",
-        "1PTr_6ga_cM74FeedVEJIRvXEFlfQeXIm",
-        "1WI3oiEZ_-ds8NKQ0gp6cH_oDpemS8fKR",
-        "1YewHeKPigG5v_rfIWiMZZtIpPU4Keraj",
-        "1B4m9-KaJrVd6fPsiWw_5FiKYwIBgd1OA",
-        "1r5A8t7gazBSCeHzpiCjSpgrPWZ5FDZsq",
-        "1SjTbg3NVjMYM0oOWW14OQqxgp1FWn5nk",
-        "11U43Q8LVg72_nOQg2j6lGw4BoaXSCX4a",
-        "1uu6slahnF9z4_1pRHHLNmyq8dL3OjZwc",
-        "1ZuZHd48MJb6NakaG7giSwDK4smpgugr0",
-        "1_glKqCkGUsoO4D1eEur0w9xd5iNOgnbI",
-        "1-wlQNv91-Uoa2vTkbOLm0nf8-FfTqsHQ",
-        "13p55i-wso86fK3F4DT029dghyiAaEM-o",
-        "1VnX1Cjy-tZU1XQPxNUCGib3NSKFVSQqm",
-        "1FZz59jt9Mmays9bKsQ6Hyu8XNJ8a1JL9",
-        "1kne3I_q2gnPFEhR1TpXbKG_iV5RYAk2I",
-        "1XEjR00UyxYw9O3xcntsQ-rZyylKCHtTI",
-        "1PHdMd6DIddiOHap4k6E7KxGWL7fLaKFF",
-        "1i37t3ExuHt_hJbjcrMO4ULNhRxKw-kwW",
-        "1xAe6XXuWve1Zi1nAsu6_d0vheAwQGN8x",
-        "1rsq-JSQxbv2hFMqvc1LagZNrOrQThkZs",
-        "1nUdPiqvfKpPjyQHLzajs7bMgTlCYL2jI",
-        "1Tdir3QywhlEbtJyd-OxEy5IHspFVPGSN",
-        "1q-6yuna6QXeXIDFsKjulYG5EJOyuv1vA",
-        "1ew-g_DaDZ_MF_SmO17anvzB0Oq-pfQOd",
-        "1gU01ZVm_EOTsRAy9bMiX47860TKfcYHu",
-        "1Y3f5hGv0naYLUHruoUjBxj3h9vGL6V5g",
-        "1_PJ8CL7VXxZ8RD3961OJfhQImXIxPPAi",
-        "1MkZWVWRrjDgbOuOqwN4wznlunXXIQYlB",
-        "1sayR7kHr8numB5eNxsbqGDoXKg-AOcTO",
-        "1nOmr6klotrKPMq2RJ_wb4jcm2eQY_G1z",
-        "1mCuaOO3a7tphmqkav3SFLZsyOz8lCfPQ",
-        "1g5xHZsLdjBWRMPMnOryAkaVb_nQe0FWQ",
-        "1-TEIoNQuiVOn9F-OMJnsuKl9FLA-V0ys",
-        "1tPOjQTEBTywN6CMiBWY0Rc6z8LxVwfw4",
-        "1jduE-5cap0L1NqhdGUrQRKfDxr0Fwy80",
-        "1CD93QqFBPxmAfZhIleNZptVYvSDuxTha",
-        "1aBL0M39lsTlXjzKKnCDAI-0rOufaDNbj",
-        "1AKrat8HAvEN8VRzC0ZdFvBQQWP2VBMg2",
-        "1rEDPe7CMOx5o6NDITBjugt2gn8rY3P9t",
-        "1ammcIWqAOJktXYPw4SVNlRgMT6H0pSUQ",
-        "1d207dHKwatD8dR2xL7JuegXvWwDzRyHw",
-        "1kuWIeVW5KnCmvAat59fM53tWgg6Alast"
-      ]
-    },
-    "perturbation": {
-      "label": "PERTURBATION — Coulisses du tournage",
-      "ids": [
-        "1ZnHI7R-2K1xTZg3IrW--M6eh3ZZbB5zW",
-        "1trqRWcxtUUZ1Nk5r3Y9l1eWL_Q9KlFMC",
-        "1MQIfpgnYXxsXIXIpGCaI3wxd-LMaSM-z",
-        "1VknYOM-gh14Lx-KwT5ftegW5zMjkA0S8",
-        "10tMun7Yg6DRMAwfYmP7h_bwY_htEccKi",
-        "1vAg_RXWDup3VJD275XxP8wnbOgBIet-y",
-        "1RC8tS5Xrn9POqufsX6APOvrRKW58pqlS",
-        "1jmI8sT0f46TqhTeMT1XB9NYY78UOfErs",
-        "1wC0NvcEVVUnaK9Vm5k9KmhIuFEX3vhYN",
-        "1qDNib5nhUeZ-GSPs24y7YRRx8XMqvQmE",
-        "1PXMP5ssIxKXPdysFbTAXGQ9myqrdtigt",
-        "1GktrxjJmTPBvWTmlCH5tZj7LGdRoIr5M",
-        "1ga-XNw40XUcCvI55tprw7rdTk8kbRWJL",
-        "1H3guNTpnHRlG7e_84AcBgLaWNMEoduTZ",
-        "1KV6lnmn6FQz4YslvIjZExXCFc127wx1E",
-      
+  <script id="album-data" type="application/json">
+{
+  "denis": {
+    "label": "Portrait de Denis",
+    "ids": [
+      "1rhNzJxQksDmsfSTXsSFqhGS1tzbOEh8M",
+      "1JDWxV9p4mhMXpzW13XATJznB88VrMsa7",
+      "1uk6IHyR7xHFChaXqxeL6Vu77OWDyUEIm",
+      "1OHKwRWEAnVLE-sl7IOMQhxt2Bd1X6TTe",
+      "1ODajiSv8YPJBsDBckNXb_ZQVK65MVg2v",
+      "1lt0LMnwB4hq5-6vL9NpeessLfoVARTId",
+      "1LTOm89NRPEWG455kqfweAaQ17Dt88LIM",
+      "1ZqkcamlapLxYEF9MdX_SOIM0gLv79TJ4",
+      "1dSDSepqmOfmHrC8lRXpsNJGuBSfvx9X_",
+      "1BDb-fwXTPNT9is8kVh8El2TeFipckeAp",
+      "1HwDFJ5yom7KK5sdbFaKUMm-5ESFe1T8N",
+      "19u8YNoR0nQ9I-cflrRbnH2K_Hbxe8Dfa",
+      "15DeGfsiXAuzrLeDcYizfL9lGCLee5nqx",
+      "1lE3cdlo13oH_he9vZ3M_J_2smEQoB4Nm",
+      "1JKMpEOD_VXiQJXhxvBIrIx8hF4UUnafY",
+      "1GUoUeYDDbh-FwLvQoobmqT1PrdeRR66m"
+    ]
+  },
+  "speleo": {
+    "label": "Spéléologie — Périgord Noir",
+    "ids": [
+      "1kNCYcQ3Ty4yc64tHuyjxCoGubMrqIRUi",
+      "17Cel8TwMFKBiFYo2_3bm9ECT0Iry2fWH",
+      "1H4Ij8TC41-zluhJ0tn_fCroonA9EM9MN",
+      "1YsWC_jhYNCUGPN_uc6Mp5fBNGhdjS9mU",
+      "1fwLEW5FSYlxxJXeZzxLRl7AGKb5xyxtN",
+      "1boGC92qFMGhglKDJsQPcWhG2w41BdPCd",
+      "1FzEV93_HltZKIjgJA5_uUH4BucVZLE6c",
+      "1dLG_BONFes7MrVlF0W56bmadp1wZqTgA",
+      "1JngzplHxGt9wFLGXBcQZaAHKy7w0jDSl",
+      "1-dD3z4fqWYxtHEOlaF22jGHDNDeSSkAu",
+      "1HC3DOG1Ei0ZO_tNB1vR4-OroBYW7HQcy",
+      "13nwAkSs4ijMu1MGNHETJwmAXnEgkBwdJ",
+      "1rQF82guYOgCmnT1cv5j-fzearn1FYLEU",
+      "1sYM-HuRqiCW6-iuPFsQYx7WFwpLpZHJa",
+      "1gPJuA-3yJUCdpISzR6g0rIue0yoA7Dn_",
+      "1c9hARo_xS-87XD-mBkynOHWZ52s6BTEz",
+      "13iP7MxohtTywzi6S01eAObZXTfDWGsWX",
+      "1E1w-Gu-tFz__WQ86A6IJeg-NRjirGSDo",
+      "1P_Gd9M1VNOPIW_bojau67qvfdPXwexNW",
+      "1KFHQc1ugmog9hji9G0GDEDw-IuyHMcXx",
+      "1O6tB2vjr3khhHYWypkWe02hbt6D7ueir",
+      "1erNUhUn-1uHuONl8UoI8FLcQWu6geare",
+      "1KZqCLKnOXVIAf7cOfFJ3L2X_p1GSo31L",
+      "10nWioAMwpjqKuQ2JiBVvj0Q3hYrDSG8o",
+      "17TGuwFjC-_Mymw0bk81hNo76UsJMnnUa",
+      "1aBLWMsF5XB7J8MlYn4A_h0MHWWGRrmyI",
+      "1KVvQ726uvxtkWoM8rzV_VknoN4Iw_HB_"
+    ]
+  },
+  "captif": {
+    "label": "CAPTIF — Coulisses du tournage",
+    "ids": [
+      "1S3rEThh01-K8c4Q3s_4aDA03K5gKHQZr",
+      "1oZiXhpFEjNOpaEHNc-4HOZGtqUEsFRab",
+      "1wDXS94A2I2-ZHYNxOduZM7079tzJPWrg",
+      "1Ea1_USNF1v1l-qsEIDbvUAwap5tmsqtV",
+      "1zBQxnjKZrqYDVv29kJAjkmtB5kkBnQ4Y",
+      "1UGRlZwn4iHWWCNLpvF2yLhC1tGCx2pgQ",
+      "1PTr_6ga_cM74FeedVEJIRvXEFlfQeXIm",
+      "1WI3oiEZ_-ds8NKQ0gp6cH_oDpemS8fKR",
+      "1YewHeKPigG5v_rfIWiMZZtIpPU4Keraj",
+      "1B4m9-KaJrVd6fPsiWw_5FiKYwIBgd1OA",
+      "1r5A8t7gazBSCeHzpiCjSpgrPWZ5FDZsq",
+      "1SjTbg3NVjMYM0oOWW14OQqxgp1FWn5nk",
+      "11U43Q8LVg72_nOQg2j6lGw4BoaXSCX4a",
+      "1uu6slahnF9z4_1pRHHLNmyq8dL3OjZwc",
+      "1ZuZHd48MJb6NakaG7giSwDK4smpgugr0",
+      "1_glKqCkGUsoO4D1eEur0w9xd5iNOgnbI",
+      "1-wlQNv91-Uoa2vTkbOLm0nf8-FfTqsHQ",
+      "13p55i-wso86fK3F4DT029dghyiAaEM-o",
+      "1VnX1Cjy-tZU1XQPxNUCGib3NSKFVSQqm",
+      "1FZz59jt9Mmays9bKsQ6Hyu8XNJ8a1JL9",
+      "1kne3I_q2gnPFEhR1TpXbKG_iV5RYAk2I",
+      "1XEjR00UyxYw9O3xcntsQ-rZyylKCHtTI",
+      "1PHdMd6DIddiOHap4k6E7KxGWL7fLaKFF",
+      "1i37t3ExuHt_hJbjcrMO4ULNhRxKw-kwW",
+      "1xAe6XXuWve1Zi1nAsu6_d0vheAwQGN8x",
+      "1rsq-JSQxbv2hFMqvc1LagZNrOrQThkZs",
+      "1nUdPiqvfKpPjyQHLzajs7bMgTlCYL2jI",
+      "1Tdir3QywhlEbtJyd-OxEy5IHspFVPGSN",
+      "1q-6yuna6QXeXIDFsKjulYG5EJOyuv1vA",
+      "1ew-g_DaDZ_MF_SmO17anvzB0Oq-pfQOd",
+      "1gU01ZVm_EOTsRAy9bMiX47860TKfcYHu",
+      "1Y3f5hGv0naYLUHruoUjBxj3h9vGL6V5g",
+      "1_PJ8CL7VXxZ8RD3961OJfhQImXIxPPAi",
+      "1MkZWVWRrjDgbOuOqwN4wznlunXXIQYlB",
+      "1sayR7kHr8numB5eNxsbqGDoXKg-AOcTO",
+      "1nOmr6klotrKPMq2RJ_wb4jcm2eQY_G1z",
+      "1mCuaOO3a7tphmqkav3SFLZsyOz8lCfPQ",
+      "1g5xHZsLdjBWRMPMnOryAkaVb_nQe0FWQ",
+      "1-TEIoNQuiVOn9F-OMJnsuKl9FLA-V0ys",
+      "1tPOjQTEBTywN6CMiBWY0Rc6z8LxVwfw4",
+      "1jduE-5cap0L1NqhdGUrQRKfDxr0Fwy80",
+      "1CD93QqFBPxmAfZhIleNZptVYvSDuxTha",
+      "1aBL0M39lsTlXjzKKnCDAI-0rOufaDNbj",
+      "1AKrat8HAvEN8VRzC0ZdFvBQQWP2VBMg2",
+      "1rEDPe7CMOx5o6NDITBjugt2gn8rY3P9t",
+      "1ammcIWqAOJktXYPw4SVNlRgMT6H0pSUQ",
+      "1d207dHKwatD8dR2xL7JuegXvWwDzRyHw",
+      "1kuWIeVW5KnCmvAat59fM53tWgg6Alast"
+    ]
+  },
+  "perturbation": {
+    "label": "PERTURBATION — Coulisses du tournage",
+    "ids": [
+      "1ZnHI7R-2K1xTZg3IrW--M6eh3ZZbB5zW",
+      "1trqRWcxtUUZ1Nk5r3Y9l1eWL_Q9KlFMC",
+      "1MQIfpgnYXxsXIXIpGCaI3wxd-LMaSM-z",
+      "1VknYOM-gh14Lx-KwT5ftegW5zMjkA0S8",
+      "10tMun7Yg6DRMAwfYmP7h_bwY_htEccKi",
+      "1vAg_RXWDup3VJD275XxP8wnbOgBIet-y",
+      "1RC8tS5Xrn9POqufsX6APOvrRKW58pqlS",
+      "1jmI8sT0f46TqhTeMT1XB9NYY78UOfErs",
+      "1wC0NvcEVVUnaK9Vm5k9KmhIuFEX3vhYN",
+      "1qDNib5nhUeZ-GSPs24y7YRRx8XMqvQmE",
+      "1PXMP5ssIxKXPdysFbTAXGQ9myqrdtigt",
+      "1GktrxjJmTPBvWTmlCH5tZj7LGdRoIr5M",
+      "1ga-XNw40XUcCvI55tprw7rdTk8kbRWJL",
+      "1H3guNTpnHRlG7e_84AcBgLaWNMEoduTZ",
+      "1KV6lnmn6FQz4YslvIjZExXCFc127wx1E"
+    ]
+  }
+}
+</script>
+  <script src="js/main.js"></script>
+</body>
+</html>
