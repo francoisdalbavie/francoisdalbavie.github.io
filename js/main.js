@@ -31,7 +31,7 @@
 
   // Agrandir le curseur sur les éléments cliquables
   const hoverTargets = document.querySelectorAll(
-    'a, button, .video-card__embed, .yt-facade, .photo-card, .nav__link'
+    'a, button, .video-card__embed, .yt-facade, .photo-card, .section__photo-thumb, .nav__link'
   );
 
   hoverTargets.forEach((el) => {
@@ -41,7 +41,7 @@
 
   // Délégation pour les éléments dynamiques (yt-facade après clic, etc.)
   document.addEventListener('mouseover', (e) => {
-    const target = e.target.closest('a, button, .photo-card, .yt-facade, .video-card__embed, .nav__link');
+    const target = e.target.closest('a, button, .photo-card, .section__photo-thumb, .yt-facade, .video-card__embed, .nav__link');
     if (target) {
       cursor.classList.add('cursor--hover');
     } else {
@@ -131,15 +131,33 @@
 
   let currentAlbum = null; // clé : "denis" | "speleo" | "captif"
   let currentIndex = 0;
+  let singleImageMode = false;
 
   function thumbUrl(id, size) {
     return `https://drive.google.com/thumbnail?id=${id}&sz=${size || 'w1600'}`;
   }
 
   function openLightbox(albumKey, index) {
+    singleImageMode = false;
     currentAlbum = albumKey;
     currentIndex = index;
+    lbPrev.hidden = false;
+    lbNext.hidden = false;
     renderLightbox();
+    lightbox.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function openSingleLightbox(src, alt, label) {
+    singleImageMode = true;
+    currentAlbum = null;
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lbCounter.textContent = '';
+    lbAlbumName.textContent = label || '';
+    lbPrev.hidden = true;
+    lbNext.hidden = true;
     lightbox.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
     lbClose.focus();
@@ -158,16 +176,23 @@
     lightbox.setAttribute('hidden', '');
     document.body.style.overflow = '';
     lbImg.src = '';
+    lbCounter.textContent = '';
+    lbAlbumName.textContent = '';
+    lbPrev.hidden = false;
+    lbNext.hidden = false;
     currentAlbum = null;
+    singleImageMode = false;
   }
 
   function showPrev() {
+    if (singleImageMode || !currentAlbum) return;
     const total = albumData[currentAlbum].ids.length;
     currentIndex = (currentIndex - 1 + total) % total;
     renderLightbox();
   }
 
   function showNext() {
+    if (singleImageMode || !currentAlbum) return;
     const total = albumData[currentAlbum].ids.length;
     currentIndex = (currentIndex + 1) % total;
     renderLightbox();
@@ -184,6 +209,24 @@
   document.querySelectorAll('.annexe-btn[data-album]').forEach((btn) => {
     btn.addEventListener('click', () => {
       openLightbox(btn.dataset.album, 0);
+    });
+  });
+
+  // Clic sur les portraits latéraux de section
+  document.querySelectorAll('.section__photo-thumb').forEach((thumb) => {
+    const openThumb = () => {
+      const src = thumb.dataset.lightboxSrc || thumb.currentSrc || thumb.src;
+      const alt = thumb.dataset.lightboxAlt || thumb.alt || '';
+      const label = thumb.dataset.lightboxLabel || '';
+      openSingleLightbox(src, alt, label);
+    };
+
+    thumb.addEventListener('click', openThumb);
+    thumb.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openThumb();
+      }
     });
   });
 
