@@ -195,7 +195,7 @@
       <p class="hero__gear">Configuration légère personnelle disponible selon les projets : Blackmagic Cinema Camera 6K, optique cinéma Jupiter Sirui 28–85, filtres Schneider ND &amp; polarisant 4x5.6, stabilisateur, trépied, cross épaule, COB 300, micro canon.</p>
       <p class="hero__residence">En résidence d’écriture de long métrage — La Rotonde Stalingrad</p>
     </div>
-    <a href="#publicite" class="hero__scroll aria-label="Défiler"><span></span></a>
+    <a href="#publicite" class="hero__scroll" aria-label="Défiler"><span></span></a>
   </header>
 
   <!-- ════ NAV ════ -->
@@ -440,7 +440,7 @@
         <h2 class="section__title">Expérience</h2>
       </div>
 
-      <div class="experience-intro reveal">
+      <div class="experience-intro">
         <p class="experience-intro__eyebrow">Parcours</p>
         <p class="experience-intro__text">
           Un parcours construit entre réalisation, plateau, production et écriture,
@@ -450,7 +450,7 @@
 
       <div class="experience-timeline">
 
-        <article class="experience-item reveal">
+        <article class="experience-item">
           <div class="experience-item__dot" aria-hidden="true"></div>
           <div class="experience-item__content">
             <p class="experience-item__date">2025–2026</p>
@@ -462,7 +462,7 @@
           </div>
         </article>
 
-        <article class="experience-item reveal">
+        <article class="experience-item">
           <div class="experience-item__dot" aria-hidden="true"></div>
           <div class="experience-item__content">
             <p class="experience-item__date">2025</p>
@@ -474,7 +474,7 @@
           </div>
         </article>
 
-        <article class="experience-item reveal">
+        <article class="experience-item">
           <div class="experience-item__dot" aria-hidden="true"></div>
           <div class="experience-item__content">
             <p class="experience-item__date">2025</p>
@@ -486,7 +486,7 @@
           </div>
         </article>
 
-        <article class="experience-item reveal">
+        <article class="experience-item">
           <div class="experience-item__dot" aria-hidden="true"></div>
           <div class="experience-item__content">
             <p class="experience-item__date">2024</p>
@@ -498,7 +498,7 @@
           </div>
         </article>
 
-        <article class="experience-item reveal">
+        <article class="experience-item">
           <div class="experience-item__dot" aria-hidden="true"></div>
           <div class="experience-item__content">
             <p class="experience-item__date">2022–2023</p>
@@ -510,7 +510,7 @@
           </div>
         </article>
 
-        <article class="experience-item reveal">
+        <article class="experience-item">
           <div class="experience-item__dot" aria-hidden="true"></div>
           <div class="experience-item__content">
             <p class="experience-item__date">2021–2025</p>
@@ -522,7 +522,7 @@
           </div>
         </article>
 
-        <article class="experience-item reveal">
+        <article class="experience-item">
           <div class="experience-item__dot" aria-hidden="true"></div>
           <div class="experience-item__content">
             <p class="experience-item__date">2020</p>
@@ -695,6 +695,68 @@
   }
 }
 </script>
+  <script>
+    (function () {
+      const thumbs = document.querySelectorAll('.section__photo-thumb');
+      if (!thumbs.length) return;
+
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+      const lbClose = document.getElementById('lb-close');
+      const lbPrev = document.getElementById('lb-prev');
+      const lbNext = document.getElementById('lb-next');
+
+      function openThumb(thumb) {
+        const src = thumb.dataset.lightboxSrc || thumb.currentSrc || thumb.src;
+        const alt = thumb.dataset.lightboxAlt || thumb.alt || '';
+        const label = thumb.dataset.lightboxLabel || '';
+
+        if (lightbox && lbImg && lbClose) {
+          lbImg.src = src;
+          lbImg.alt = alt;
+          const counter = document.getElementById('lb-counter');
+          const albumName = document.getElementById('lb-album-name');
+          if (counter) counter.textContent = '';
+          if (albumName) albumName.textContent = label;
+          if (lbPrev) lbPrev.hidden = true;
+          if (lbNext) lbNext.hidden = true;
+          lightbox.hidden = false;
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+
+        window.open(src, '_blank');
+      }
+
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener('click', () => openThumb(thumb));
+        thumb.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openThumb(thumb);
+          }
+        });
+      });
+
+      if (lightbox && lbClose) {
+        lbClose.addEventListener('click', () => {
+          lightbox.hidden = true;
+          document.body.style.overflow = '';
+          if (lbPrev) lbPrev.hidden = false;
+          if (lbNext) lbNext.hidden = false;
+        });
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            lightbox.hidden = true;
+            document.body.style.overflow = '';
+            if (lbPrev) lbPrev.hidden = false;
+            if (lbNext) lbNext.hidden = false;
+          }
+        });
+      }
+    })();
+  </script>
+
   <script src="js/main.js"></script>
 </body>
 </html>
