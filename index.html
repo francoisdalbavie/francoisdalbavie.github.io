@@ -63,8 +63,24 @@
       pointer-events: none;
     }
 
+    /* Hero : centrage vertical et horizontal du texte */
+    .hero {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
     /* Le hero__inner garde son z-index au-dessus, centré */
-    .hero__inner { position: relative; z-index: 1; margin: 0 auto; text-align: center; }
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     /* Photos dans les sections — marge droite */
     #publicite, #fiction { position: relative; }
