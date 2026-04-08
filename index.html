@@ -194,13 +194,16 @@
     /* ── PHOTO INLINE dans les sections ── */
     .section__inline-photo {
       display: block;
-      width: 100%;
-      max-width: 280px;
-      margin-top: 2rem;
+      width: 160px;
+      height: 200px;
+      object-fit: cover;
+      float: right;
+      margin: 0 0 1rem 2rem;
       border-radius: 2px;
-      filter: grayscale(15%) contrast(1.05);
-      opacity: 0.85;
+      filter: grayscale(20%) contrast(1.05);
+      opacity: 0.75;
       transition: opacity 0.3s var(--ease), filter 0.3s var(--ease);
+      border: 1px solid var(--grey-m);
     }
 
     .section__inline-photo:hover {
@@ -210,7 +213,12 @@
 
     @media (max-width: 768px) {
       .hero__bg img { opacity: 0.12; }
-      .section__inline-photo { max-width: 100%; }
+      .section__inline-photo {
+        float: none;
+        width: 100px;
+        height: 130px;
+        margin: 1.5rem 0 0 0;
+      }
     }
   </style>
 </head>
