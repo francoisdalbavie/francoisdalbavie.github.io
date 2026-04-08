@@ -82,10 +82,48 @@
       transition: opacity 0.3s, filter 0.3s;
     }
 
+    .section__photo-thumb {
+      cursor: zoom-in;
+    }
+
     .section__photo-thumb:hover {
       opacity: 1;
       filter: grayscale(0%) contrast(1);
     }
+
+    /* Lightbox simple pour les photos thumb */
+    .thumb-lb {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(8,8,8,0.93);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .thumb-lb.is-open { display: flex; }
+    .thumb-lb img {
+      max-width: 88vw;
+      max-height: 88vh;
+      object-fit: contain;
+      display: block;
+      filter: grayscale(10%) contrast(1.05);
+      cursor: default;
+    }
+    .thumb-lb__close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      font-size: 1.4rem;
+      color: var(--white);
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+      font-family: var(--font-body);
+      transition: opacity 0.2s;
+    }
+    .thumb-lb__close:hover { opacity: 1; }
 
     @media (max-width: 1300px) {
       .section__photo-thumb { right: -90px; width: 80px; }
