@@ -20,7 +20,6 @@
     mouseY = e.clientY;
   });
 
-  // Lerp pour mouvement fluide
   function animateCursor() {
     cursorX += (mouseX - cursorX) * 0.12;
     cursorY += (mouseY - cursorY) * 0.12;
@@ -29,7 +28,6 @@
   }
   animateCursor();
 
-  // Agrandir le curseur sur les éléments cliquables
   const hoverTargets = document.querySelectorAll(
     'a, button, .video-card__embed, .yt-facade, .photo-card, .section__photo-thumb, .nav__link'
   );
@@ -39,7 +37,6 @@
     el.addEventListener('mouseleave', () => cursor.classList.remove('cursor--hover'));
   });
 
-  // Délégation pour les éléments dynamiques (yt-facade après clic, etc.)
   document.addEventListener('mouseover', (e) => {
     const target = e.target.closest('a, button, .photo-card, .section__photo-thumb, .yt-facade, .video-card__embed, .nav__link');
     if (target) {
@@ -50,7 +47,6 @@
   });
 
   /* ── 2. SCROLL REVEAL ────────────────────────────────────── */
-  // On ajoute la classe .reveal à tous les éléments à animer
   const revealSelectors = [
     '.video-card',
     '.photo-card',
@@ -72,7 +68,7 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); // ne déclencher qu'une fois
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -94,10 +90,7 @@
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
           navLinks.forEach((link) => {
-            link.classList.toggle(
-              'is-active',
-              link.getAttribute('href') === `#${id}`
-            );
+            link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
           });
         }
       });
@@ -111,11 +104,13 @@
 
   /* ── 4. NAV OMBRE AU SCROLL ──────────────────────────────── */
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.style.borderBottomColor = window.scrollY > 60
-      ? 'rgba(60,60,60,0.6)'
-      : 'var(--grey-d)';
-  }, { passive: true });
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 60
+        ? 'rgba(60,60,60,0.6)'
+        : 'var(--grey-d)';
+    }, { passive: true });
+  }
 
   /* ── 5. LIGHTBOX — système multi-albums ─────────────────── */
   const lightbox    = document.getElementById('lightbox');
@@ -126,64 +121,65 @@
   const lbPrev      = document.getElementById('lb-prev');
   const lbNext      = document.getElementById('lb-next');
 
-  // Charger les données albums depuis le JSON embarqué
-  const albumDataEl = document.getElementById('album-data'); 
+  const albumDataEl = document.getElementById('album-data');
   const albumData = albumDataEl ? JSON.parse(albumDataEl.textContent) : {};
 
-  let currentAlbum = null; // clé : "denis" | "speleo" | "captif"
+  let currentAlbum = null;
   let currentIndex = 0;
   let singleImageMode = false;
+
   function ensureThumbLightbox() {
-  let thumbLb = document.getElementById('thumb-lightbox-fallback');
-  if (thumbLb) return thumbLb;
+    let thumbLb = document.getElementById('thumb-lightbox-fallback');
+    if (thumbLb) return thumbLb;
 
-  thumbLb = document.createElement('div');
-  thumbLb.id = 'thumb-lightbox-fallback';
-  thumbLb.className = 'thumb-lb';
-  thumbLb.innerHTML = `
-    <button class="thumb-lb__close" type="button" aria-label="Fermer">Fermer</button>
-    <img src="" alt="" />
-  `;
-  document.body.appendChild(thumbLb);
+    thumbLb = document.createElement('div');
+    thumbLb.id = 'thumb-lightbox-fallback';
+    thumbLb.className = 'thumb-lb';
+    thumbLb.innerHTML = `
+      <button class="thumb-lb__close" type="button" aria-label="Fermer">Fermer</button>
+      <img src="" alt="" />
+    `;
+    document.body.appendChild(thumbLb);
 
-  const closeBtn = thumbLb.querySelector('.thumb-lb__close');
-  const img = thumbLb.querySelector('img');
+    const closeBtn = thumbLb.querySelector('.thumb-lb__close');
+    const img = thumbLb.querySelector('img');
 
-  function closeThumbLb() {
-    thumbLb.classList.remove('is-open');
-    img.src = '';
-    img.alt = '';
-    document.body.style.overflow = '';
+    function closeThumbLb() {
+      thumbLb.classList.remove('is-open');
+      img.src = '';
+      img.alt = '';
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeThumbLb);
+    thumbLb.addEventListener('click', (e) => {
+      if (e.target === thumbLb) closeThumbLb();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && thumbLb.classList.contains('is-open')) {
+        closeThumbLb();
+      }
+    });
+
+    return thumbLb;
   }
 
-  closeBtn.addEventListener('click', closeThumbLb);
-  thumbLb.addEventListener('click', (e) => {
-    if (e.target === thumbLb) closeThumbLb();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && thumbLb.classList.contains('is-open')) {
-      closeThumbLb();
-    }
-  });
-
-  return thumbLb;
-}
-
-function openThumbFallback(src, alt) {
-  const thumbLb = ensureThumbLightbox();
-  const img = thumbLb.querySelector('img');
-  img.src = src;
-  img.alt = alt || '';
-  thumbLb.classList.add('is-open');
-  document.body.style.overflow = 'hidden';
-}
+  function openThumbFallback(src, alt) {
+    const thumbLb = ensureThumbLightbox();
+    const img = thumbLb.querySelector('img');
+    img.src = src;
+    img.alt = alt || '';
+    thumbLb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
 
   function thumbUrl(id, size) {
     return `https://drive.google.com/thumbnail?id=${id}&sz=${size || 'w1600'}`;
   }
 
   function openLightbox(albumKey, index) {
+    if (!lightbox || !lbImg || !lbClose || !lbPrev || !lbNext || !albumData[albumKey]) return;
     singleImageMode = false;
     currentAlbum = albumKey;
     currentIndex = index;
@@ -196,74 +192,76 @@ function openThumbFallback(src, alt) {
   }
 
   function openSingleLightbox(src, alt, label) {
-  if (!lightbox || !lbImg || !lbClose || !lbPrev || !lbNext) {
-    openThumbFallback(src, alt);
-    return;
-  }
+    if (!lightbox || !lbImg || !lbClose || !lbPrev || !lbNext) {
+      openThumbFallback(src, alt);
+      return;
+    }
 
-  singleImageMode = true;
-  currentAlbum = null;
-  lbImg.src = src;
-  lbImg.alt = alt || '';
-  lbCounter.textContent = '';
-  lbAlbumName.textContent = label || '';
-  lbPrev.hidden = true;
-  lbNext.hidden = true;
-  lightbox.removeAttribute('hidden');
-  document.body.style.overflow = 'hidden';
-  lbClose.focus();
+    singleImageMode = true;
+    currentAlbum = null;
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    if (lbCounter) lbCounter.textContent = '';
+    if (lbAlbumName) lbAlbumName.textContent = label || '';
+    lbPrev.hidden = true;
+    lbNext.hidden = true;
+    lightbox.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
   }
 
   function renderLightbox() {
     const album = albumData[currentAlbum];
+    if (!album) return;
     const total = album.ids.length;
     lbImg.src = thumbUrl(album.ids[currentIndex]);
     lbImg.alt = `${album.label} — ${currentIndex + 1}`;
-    lbCounter.textContent = `${currentIndex + 1} / ${total}`;
-    lbAlbumName.textContent = album.label;
+    if (lbCounter) lbCounter.textContent = `${currentIndex + 1} / ${total}`;
+    if (lbAlbumName) lbAlbumName.textContent = album.label;
   }
 
   function closeLightbox() {
+    if (!lightbox) return;
     lightbox.setAttribute('hidden', '');
     document.body.style.overflow = '';
-    lbImg.src = '';
-    lbCounter.textContent = '';
-    lbAlbumName.textContent = '';
-    lbPrev.hidden = false;
-    lbNext.hidden = false;
+    if (lbImg) {
+      lbImg.src = '';
+      lbImg.alt = '';
+    }
+    if (lbCounter) lbCounter.textContent = '';
+    if (lbAlbumName) lbAlbumName.textContent = '';
+    if (lbPrev) lbPrev.hidden = false;
+    if (lbNext) lbNext.hidden = false;
     currentAlbum = null;
     singleImageMode = false;
   }
 
   function showPrev() {
-    if (singleImageMode || !currentAlbum) return;
+    if (singleImageMode || !currentAlbum || !albumData[currentAlbum]) return;
     const total = albumData[currentAlbum].ids.length;
     currentIndex = (currentIndex - 1 + total) % total;
     renderLightbox();
   }
 
   function showNext() {
-    if (singleImageMode || !currentAlbum) return;
+    if (singleImageMode || !currentAlbum || !albumData[currentAlbum]) return;
     const total = albumData[currentAlbum].ids.length;
     currentIndex = (currentIndex + 1) % total;
     renderLightbox();
   }
 
-  // Clic sur une photo de grille
   document.querySelectorAll('.photo-card[data-album]').forEach((card) => {
     card.addEventListener('click', () => {
       openLightbox(card.dataset.album, parseInt(card.dataset.index, 10));
     });
   });
 
-  // Clic sur le bouton annexe CAPTIF
   document.querySelectorAll('.annexe-btn[data-album]').forEach((btn) => {
     btn.addEventListener('click', () => {
       openLightbox(btn.dataset.album, 0);
     });
   });
 
-  // Clic sur les portraits latéraux de section
   document.querySelectorAll('.section__photo-thumb').forEach((thumb) => {
     const openThumb = () => {
       const src = thumb.dataset.lightboxSrc || thumb.currentSrc || thumb.src;
@@ -281,7 +279,6 @@ function openThumbFallback(src, alt) {
     });
   });
 
-  // Boutons navigation
   if (lbClose && lbPrev && lbNext && lightbox) {
     lbClose.addEventListener('click', closeLightbox);
     lbPrev.addEventListener('click', showPrev);
@@ -290,25 +287,20 @@ function openThumbFallback(src, alt) {
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.hasAttribute('hidden')) return;
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'Escape') closeLightbox();
+    });
   }
 
-  // Clavier
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox || lightbox.hasAttribute('hidden')) return;
-    if (e.key === 'ArrowLeft')  showPrev();
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'Escape')     closeLightbox();
-  });
-
   /* ── 6. YOUTUBE FAÇADE — chargement différé ─────────────── */
-  // Certaines vidéos YouTube ne servent pas maxresdefault.jpg —
-  // on tente d'abord cette qualité, et on bascule sur hqdefault si l'image
-  // retourne une image "placeholder" (largeur ≤ 120px, typiquement 120×90).
   document.querySelectorAll('.yt-facade').forEach((facade) => {
     const id = facade.dataset.id;
     const img = facade.querySelector('img');
 
-    // Fallback qualité d'image : maxres → hq
     if (img) {
       const checker = new Image();
       checker.onload = function () {
@@ -319,20 +311,15 @@ function openThumbFallback(src, alt) {
       checker.src = img.src;
     }
 
-    // Clic : injecter l'iframe avec autoplay
     facade.addEventListener('click', () => {
       const iframe = document.createElement('iframe');
       iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
       iframe.allow = 'autoplay; fullscreen; picture-in-picture';
       iframe.allowFullscreen = true;
       iframe.title = facade.dataset.title || 'Vidéo';
-
-      // Supprimer image + bouton, insérer l'iframe
       facade.innerHTML = '';
       facade.appendChild(iframe);
-      // Désactiver le curseur hover une fois la vidéo lancée
       facade.classList.remove('yt-facade');
     });
   });
-
 })();
