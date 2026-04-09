@@ -127,56 +127,12 @@
   const lbNext      = document.getElementById('lb-next');
 
   // Charger les données albums depuis le JSON embarqué
-  const albumDataEl = document.getElementById('album-data'); 
+  const albumDataEl = document.getElementById('album-data');
   const albumData = albumDataEl ? JSON.parse(albumDataEl.textContent) : {};
 
   let currentAlbum = null; // clé : "denis" | "speleo" | "captif"
   let currentIndex = 0;
-  function ensureThumbLightbox() {
-  let thumbLb = document.getElementById('thumb-lightbox-fallback');
-  if (thumbLb) return thumbLb;
-
-  thumbLb = document.createElement('div');
-  thumbLb.id = 'thumb-lightbox-fallback';
-  thumbLb.className = 'thumb-lb';
-  thumbLb.innerHTML = `
-    <button class="thumb-lb__close" type="button" aria-label="Fermer">Fermer</button>
-    <img src="" alt="" />
-  `;
-  document.body.appendChild(thumbLb);
-
-  const closeBtn = thumbLb.querySelector('.thumb-lb__close');
-  const img = thumbLb.querySelector('img');
-
-  function closeThumbLb() {
-    thumbLb.classList.remove('is-open');
-    img.src = '';
-    img.alt = '';
-    document.body.style.overflow = '';
-  }
-
-  closeBtn.addEventListener('click', closeThumbLb);
-  thumbLb.addEventListener('click', (e) => {
-    if (e.target === thumbLb) closeThumbLb();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && thumbLb.classList.contains('is-open')) {
-      closeThumbLb();
-    }
-  });
-
-  return thumbLb;
-}
-
-function openThumbFallback(src, alt) {
-  const thumbLb = ensureThumbLightbox();
-  const img = thumbLb.querySelector('img');
-  img.src = src;
-  img.alt = alt || '';
-  thumbLb.classList.add('is-open');
-  document.body.style.overflow = 'hidden';
-}
+  let singleImageMode = false;
 
   function thumbUrl(id, size) {
     return `https://drive.google.com/thumbnail?id=${id}&sz=${size || 'w1600'}`;
@@ -195,22 +151,17 @@ function openThumbFallback(src, alt) {
   }
 
   function openSingleLightbox(src, alt, label) {
-  if (!lightbox || !lbImg || !lbClose || !lbPrev || !lbNext) {
-    openThumbFallback(src, alt);
-    return;
-  }
-
-  singleImageMode = true;
-  currentAlbum = null;
-  lbImg.src = src;
-  lbImg.alt = alt || '';
-  lbCounter.textContent = '';
-  lbAlbumName.textContent = label || '';
-  lbPrev.hidden = true;
-  lbNext.hidden = true;
-  lightbox.removeAttribute('hidden');
-  document.body.style.overflow = 'hidden';
-  lbClose.focus();
+    singleImageMode = true;
+    currentAlbum = null;
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lbCounter.textContent = '';
+    lbAlbumName.textContent = label || '';
+    lbPrev.hidden = true;
+    lbNext.hidden = true;
+    lightbox.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
   }
 
   function renderLightbox() {
@@ -226,6 +177,7 @@ function openThumbFallback(src, alt) {
     lightbox.setAttribute('hidden', '');
     document.body.style.overflow = '';
     lbImg.src = '';
+    lbImg.alt = '';
     lbCounter.textContent = '';
     lbAlbumName.textContent = '';
     lbPrev.hidden = false;
@@ -281,11 +233,11 @@ function openThumbFallback(src, alt) {
   });
 
   // Boutons navigation
-  if (lbClose && lbPrev && lbNext && lightbox) {
   lbClose.addEventListener('click', closeLightbox);
   lbPrev.addEventListener('click', showPrev);
   lbNext.addEventListener('click', showNext);
 
+  // Clic fond = fermer
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
   });
