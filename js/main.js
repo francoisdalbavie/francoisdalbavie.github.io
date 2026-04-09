@@ -132,6 +132,7 @@
 
   let currentAlbum = null; // clé : "denis" | "speleo" | "captif"
   let currentIndex = 0;
+  let singleImageMode = false;
   function ensureThumbLightbox() {
   let thumbLb = document.getElementById('thumb-lightbox-fallback');
   if (thumbLb) return thumbLb;
@@ -282,17 +283,18 @@ function openThumbFallback(src, alt) {
 
   // Boutons navigation
   if (lbClose && lbPrev && lbNext && lightbox) {
-  lbClose.addEventListener('click', closeLightbox);
-  lbPrev.addEventListener('click', showPrev);
-  lbNext.addEventListener('click', showNext);
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', showPrev);
+    lbNext.addEventListener('click', showNext);
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
 
   // Clavier
   document.addEventListener('keydown', (e) => {
-    if (lightbox.hasAttribute('hidden')) return;
+    if (!lightbox || lightbox.hasAttribute('hidden')) return;
     if (e.key === 'ArrowLeft')  showPrev();
     if (e.key === 'ArrowRight') showNext();
     if (e.key === 'Escape')     closeLightbox();
