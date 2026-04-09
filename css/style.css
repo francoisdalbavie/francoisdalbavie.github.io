@@ -223,7 +223,8 @@ img {
 }
 
 .hero__sub {
-  margin-top: 2.5rem;
+  margin-top: 2.9rem;
+  letter-spacing: 1.6px;
   font-size: 0.75rem;
   letter-spacing: 2px;
   text-transform: uppercase;
