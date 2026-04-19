@@ -322,4 +322,24 @@
       facade.classList.remove('yt-facade');
     });
   });
+  /* ── 7. DUO CAROUSEL — navigation entre 2 vidéos ─────────── */
+  document.querySelectorAll('.video-card--duo').forEach((card) => {
+    const dots = card.querySelectorAll('.duo-dot');
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetSlide = parseInt(dot.dataset.slide, 10);
+        const slides = card.querySelectorAll('.duo-slide');
+
+        slides.forEach((s, i) => {
+          s.classList.toggle('duo-slide--active', i === targetSlide);
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle('duo-dot--active', i === targetSlide);
+        });
+      });
+    });
+  });
+
 })();
