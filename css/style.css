@@ -880,6 +880,47 @@ img {
 .reveal:nth-child(4) { transition-delay: 0.3s; }
 .reveal:nth-child(5) { transition-delay: 0.4s; }
 
+/* ── DUO CAROUSEL (carte à 2 vidéos) ── */
+.video-card--duo {
+  position: relative;
+}
+
+.duo-slide {
+  display: none;
+}
+
+.duo-slide--active {
+  display: block;
+}
+
+.duo-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0 4px;
+  position: absolute;
+  bottom: 52px; /* au-dessus du label */
+  left: 0; right: 0;
+  pointer-events: none;
+}
+
+.duo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--grey-l);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  pointer-events: all;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.duo-dot--active {
+  background: var(--white);
+  border-color: var(--white);
+}
+
 /* ── BOUTON ANNEXE TOURNAGE ── */
 .annexe-btn {
   display: inline-block;
