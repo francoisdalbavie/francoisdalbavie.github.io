@@ -555,6 +555,40 @@ img {
   max-width: 320px;
 }
 
+/* ── RÉSEAUX SOCIAUX ── */
+.social-intro {
+  max-width: 620px;
+  margin: -1.5rem 0 3rem;
+  font-size: 0.82rem;
+  line-height: 1.9;
+  letter-spacing: 0.4px;
+  color: var(--grey-l);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--grey-d);
+}
+
+.social-card__embed {
+  padding-bottom: 0;
+  aspect-ratio: 9 / 16;
+}
+
+.social-card .video-card__label {
+  padding-bottom: 0.9rem;
+}
+
+.social-card .video-card__label a {
+  transition: color 0.2s var(--ease);
+}
+
+.social-card .video-card__label a:hover {
+  color: var(--accent);
+}
+
 /* ── FICTION HERO ── */
 .fiction-hero {
   display: grid;
@@ -1059,6 +1093,10 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .social-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .photo-card img {
     height: 200px;
   }
@@ -1093,6 +1131,15 @@ img {
 @media (max-width: 600px) {
   .section {
     padding: 5rem 1.5rem;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .social-intro {
+    margin-top: -1rem;
+    margin-bottom: 2.5rem;
   }
 
   .nav__list {
