@@ -322,7 +322,28 @@
       facade.classList.remove('yt-facade');
     });
   });
-  /* ── 7. DUO CAROUSEL — navigation entre 2 vidéos ─────────── */
+  /* ── 7. COLLECTION CAPTATION — affichage des vidéos ───────── */
+  document.querySelectorAll('.captation-collection[data-target]').forEach((trigger) => {
+    const panel = document.getElementById(trigger.dataset.target);
+    const action = trigger.querySelector('.captation-collection__action');
+
+    if (!panel) return;
+
+    trigger.addEventListener('click', () => {
+      const willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+      trigger.setAttribute('aria-expanded', String(willOpen));
+      trigger.classList.toggle('is-open', willOpen);
+      panel.hidden = !willOpen;
+
+      if (action) {
+        action.innerHTML = willOpen
+          ? 'Masquer les vidéos <span aria-hidden="true">↓</span>'
+          : 'Voir les vidéos <span aria-hidden="true">↓</span>';
+      }
+    });
+  });
+
+  /* ── 8. DUO CAROUSEL — navigation entre 2 vidéos ─────────── */
   document.querySelectorAll('.video-card--duo').forEach((card) => {
     const dots = card.querySelectorAll('.duo-dot');
 
