@@ -202,6 +202,7 @@
   <nav class="nav" id="nav" role="navigation" aria-label="Menu principal">
     <ul class="nav__list">
       <li><a href="#publicite"    class="nav__link">Publicités</a></li>
+      <li><a href="#captation"    class="nav__link">Captation</a></li>
       <li><a href="#fiction"      class="nav__link">Fiction</a></li>
       <li><a href="#reseaux"      class="nav__link">Réseaux sociaux</a></li>
       <li><a href="#photos"       class="nav__link">Photos</a></li>
@@ -217,7 +218,7 @@
     <section class="section" id="publicite">
       <div class="section__header">
         <span class="section__num">01</span>
-        <h2 class="section__title">Publicités, Vidéos créatives &amp;<br />Captations</h2>
+        <h2 class="section__title">Publicités &amp;<br />Vidéos créatives</h2>
       </div>
 
       <div class="showreel-hero">
@@ -281,6 +282,22 @@
           <p class="video-card__label">Clip – Fearfulman</p>
           <p class="video-card__sublabel">Chanteuse : Loriane Girard</p>
         </article>
+      </div>
+    </section>
+
+
+    <!-- ════ 02 — CAPTATION ════ -->
+    <section class="section" id="captation">
+      <div class="section__header">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Captation</h2>
+      </div>
+
+      <p class="captation-intro">
+        Captations, capsules événementielles et réalisation multicaméra pour formats scéniques, conférences et podcasts.
+      </p>
+
+      <div class="video-grid captation-capsules">
 
         <article class="video-card">
           <div class="video-card__embed yt-facade" data-id="bckHCeemi2I" data-title="Capsule captation — Amel Bent">
@@ -301,12 +318,69 @@
         </article>
 
       </div>
+
+      <div class="divider"><span>Format multicaméra</span></div>
+
+      <button
+        class="captation-collection"
+        type="button"
+        data-target="multicam-videos"
+        aria-expanded="false"
+        aria-controls="multicam-videos"
+      >
+        <span class="captation-collection__thumb" aria-hidden="true">
+          <img src="https://img.youtube.com/vi/QJvBbclOFWA/maxresdefault.jpg" alt="" loading="lazy" />
+          <span class="captation-collection__badge">4 vidéos</span>
+        </span>
+        <span class="captation-collection__text">
+          <span class="captation-collection__eyebrow">Le Crayon · Podcasts</span>
+          <span class="captation-collection__title">Captation multicaméra</span>
+          <span class="captation-collection__body">Une sélection de formats conversationnels et de débats filmés en multicaméra.</span>
+          <span class="captation-collection__action">Voir les vidéos <span aria-hidden="true">↓</span></span>
+        </span>
+      </button>
+
+      <div class="multicam-grid" id="multicam-videos" hidden>
+
+        <article class="video-card">
+          <div class="video-card__embed yt-facade" data-id="QJvBbclOFWA" data-title="Le Crayon — Débat Bolloré">
+            <img src="https://img.youtube.com/vi/QJvBbclOFWA/maxresdefault.jpg" alt="Le Crayon — Débat Bolloré" loading="lazy" />
+            <button class="yt-play" aria-label="Lire Le Crayon — Débat Bolloré"></button>
+          </div>
+          <p class="video-card__label">Le Crayon — Débat Bolloré</p>
+        </article>
+
+        <article class="video-card">
+          <div class="video-card__embed yt-facade" data-id="SWZfNWsHsf4" data-title="Le Crayon — Violences policières">
+            <img src="https://img.youtube.com/vi/SWZfNWsHsf4/maxresdefault.jpg" alt="Le Crayon — Violences policières" loading="lazy" />
+            <button class="yt-play" aria-label="Lire Le Crayon — Violences policières"></button>
+          </div>
+          <p class="video-card__label">Le Crayon — Violences policières</p>
+        </article>
+
+        <article class="video-card">
+          <div class="video-card__embed yt-facade" data-id="UZGsURQyHwI" data-title="Le Crayon — Débat CNews">
+            <img src="https://img.youtube.com/vi/UZGsURQyHwI/maxresdefault.jpg" alt="Le Crayon — Débat CNews" loading="lazy" />
+            <button class="yt-play" aria-label="Lire Le Crayon — Débat CNews"></button>
+          </div>
+          <p class="video-card__label">Le Crayon — Débat CNews</p>
+        </article>
+
+        <article class="video-card">
+          <div class="video-card__embed yt-facade" data-id="zUISj7zJSPM" data-title="Dis Ménie — Épisode 4">
+            <img src="https://img.youtube.com/vi/zUISj7zJSPM/maxresdefault.jpg" alt="Dis Ménie — Épisode 4" loading="lazy" />
+            <button class="yt-play" aria-label="Lire Dis Ménie — Épisode 4"></button>
+          </div>
+          <p class="video-card__label">Dis Ménie — Épisode 4</p>
+        </article>
+
+      </div>
     </section>
 
-    <!-- ════ 02 — FICTION ════ -->
+    <!-- ════ 03 — FICTION ════ -->
     <section class="section" id="fiction">
       <div class="section__header">
-        <span class="section__num">02</span>
+        <span class="section__num">03</span>
         <h2 class="section__title">Fiction</h2>
       </div>
 
@@ -366,10 +440,10 @@
       </div>
     </section>
 
-    <!-- ════ 03 — RÉSEAUX SOCIAUX ════ -->
+    <!-- ════ 04 — RÉSEAUX SOCIAUX ════ -->
     <section class="section" id="reseaux">
       <div class="section__header">
-        <span class="section__num">03</span>
+        <span class="section__num">04</span>
         <h2 class="section__title">Réseaux sociaux</h2>
       </div>
 
@@ -436,10 +510,10 @@
       </div>
     </section>
 
-    <!-- ════ 04 — PHOTOGRAPHIE ════ -->
+    <!-- ════ 05 — PHOTOGRAPHIE ════ -->
     <section class="section" id="photos">
       <div class="section__header">
-        <span class="section__num">04</span>
+        <span class="section__num">05</span>
         <h2 class="section__title">Photographie</h2>
       </div>
 
@@ -503,10 +577,10 @@
 
     </section>
 
-    <!-- ════ 05 — DOCUMENTAIRE ════ -->
+    <!-- ════ 06 — DOCUMENTAIRE ════ -->
     <section class="section" id="documentaire">
       <div class="section__header">
-        <span class="section__num">05</span>
+        <span class="section__num">06</span>
         <h2 class="section__title">Documentaire</h2>
       </div>
 
@@ -523,10 +597,10 @@
 
     </section>
 
-        <!-- ════ 06 — EXPÉRIENCE ════ -->
+        <!-- ════ 07 — EXPÉRIENCE ════ -->
     <section class="section section--experience" id="experience">
       <div class="section__header">
-        <span class="section__num">06</span>
+        <span class="section__num">07</span>
         <h2 class="section__title">Expérience</h2>
       </div>
 
