@@ -175,6 +175,7 @@
   }
 
   function thumbUrl(id, size) {
+    if (/^\d+-denis-photo-[a-z0-9-]+\.jpg$/.test(id)) return id;
     return `https://drive.google.com/thumbnail?id=${id}&sz=${size || 'w1600'}`;
   }
 
